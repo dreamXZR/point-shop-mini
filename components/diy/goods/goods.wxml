@@ -1,0 +1,28 @@
+<!-- 商品组 -->
+<view class="diy-goods" style="background: {{ itemStyle.background }};">
+  <view class="goods-list display__{{ itemStyle.display }} column__{{ itemStyle.column }}">
+    <scroll-view scroll-x="{{ itemStyle.display === 'slide' ? true : false }}">
+      <view class="goods-item" wx:for="{{ dataList }}" wx:key="this" wx:for-item="dataItem">
+        <form bindsubmit="_onTargetGoods" report-submit="true">
+          <button formType="submit" class="btn-normal" data-id="{{ dataItem.goods_id }}">
+            <!-- 商品图片 -->
+            <view class="goods-image">
+              <image mode="aspectFill" src="{{ dataItem.image }}"></image>
+            </view>
+            <view class="detail">
+              <!-- 商品标题 -->
+              <view wx:if="{{ itemStyle.show.goodsName }}" class="goods-name twolist-hidden f-30">
+                {{ dataItem.goods_name }}
+              </view>
+              <!-- 商品价格 -->
+              <view class="detail-price onelist-hidden">
+                <text wx:if="{{ itemStyle.show.goodsPrice }}" class="goods-price f-30 col-m">￥{{ dataItem.goods_price }}</text>
+                <text wx:if="{{ itemStyle.show.linePrice && dataItem.line_price > 0 }}" class="line-price col-9 f-24">￥{{ dataItem.line_price }}</text>
+              </view>
+            </view>
+          </button>
+        </form>
+      </view>
+    </scroll-view>
+  </view>
+</view>

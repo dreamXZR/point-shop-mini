@@ -1,0 +1,9 @@
+<!-- 搜索框 -->
+<view class="diy-search-box dis-flex col-f ts-3">
+  <view class="diy-search flex-box angle-{{itemStyle.searchStyle}} text-{{itemStyle.textAlign}}">
+    <navigator class="cont" hover-class="none" openType="navigate" url="/pages/search/index">
+      <text class="iconfont icon-sousuo f-30"></text>
+      <text class="f-28">{{  params.placeholder }}</text>
+    </navigator>
+  </view>
+</view>

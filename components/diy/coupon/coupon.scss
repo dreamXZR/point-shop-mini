@@ -1,0 +1,72 @@
+@charset "utf-8";
+
+// 定义函数 rpx
+@function rpx($value) {
+  @return $value * 1rpx;
+}
+
+
+// diy-优惠券组
+.diy-coupon {
+  .coupon-item {
+    width: rpx(300);
+    height: rpx(120);
+    position: relative;
+    color: #fff;
+    overflow: hidden;
+    box-sizing: border-box;
+    i.before {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      width: rpx(40);
+      height: rpx(40);
+      top: 50%;
+      left: -.8rem;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+      -webkit-border-radius: 80%;
+      border-radius: 80%;
+      background-color: #fff;
+    }
+    .left-content {
+      //float: left;
+      position: relative;
+      width: 70%;
+      height: 100%;
+      background-color: #E5004F;
+      font-size: 12px;
+      .content-top {
+        .price {
+          font-size: 2rem;
+        }
+      }
+      &.color__blue {
+        background: linear-gradient(-125deg, #57bdbf, #2f9de2);
+      }
+      &.color__red {
+        background: linear-gradient(-128deg, #ff6d6d, #ff3636);
+      }
+      &.color__violet {
+        background: linear-gradient(-113deg, #ef86ff, #b66ff5);
+      }
+      &.color__yellow {
+        background: linear-gradient(-141deg, #f7d059, #fdb054);
+      }
+    }
+    .right-receive {
+      //float: right;
+      width: 30%;
+      height: 100%;
+      background-color: #4e4e4e;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text {
+        font-size: 1.3rem;
+      }
+    }
+  }
+}

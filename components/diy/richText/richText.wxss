@@ -1,0 +1,8 @@
+/* 富文本 */
+
+/* wxParse.wxss */
+@import "/wxParse/wxParse.wxss";
+
+.diy-richText {
+  font-size: 28rpx;
+}
