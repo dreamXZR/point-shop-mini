@@ -2,9 +2,10 @@
   "pages": [
     "pages/index/index",
     "pages/custom/index",
-    "pages/category/index",
-    "pages/category/list",
+    "pages/pointCategory/index",
+    "pages/pointCategory/list",
     "pages/goods/index",
+    "pages/pointGoods/index",
     "pages/goods/comment/comment",
     "pages/search/index",
     "pages/flow/index",
@@ -68,14 +69,14 @@
         "selectedIconPath": "images/home-active.png"
       },
       {
-        "pagePath": "pages/category/index",
+        "pagePath": "pages/pointCategory/index",
         "text": "积分商城",
         "iconPath": "images/cate.png",
         "selectedIconPath": "images/cate-active.png"
       },
       {
         "pagePath": "pages/flow/index",
-        "text": "店铺",
+        "text": "购物车",
         "iconPath": "images/flow.png",
         "selectedIconPath": "images/flow-active.png"
       },
@@ -94,5 +95,5 @@
       "desc": "你的位置信息将用于为您提供更合适您的服务"
     }
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap24.json"
 }

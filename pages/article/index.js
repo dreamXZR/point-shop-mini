@@ -99,13 +99,9 @@ Page({
    * 分享当前页面
    */
   onShareAppMessage: function() {
-    // 构建页面参数
-    let params = App.urlEncode({
-      'referee_id': App.getUserId()
-    });
     return {
       title: '文章首页',
-      path: "/pages/article/index?" + params
+      path: "/pages/article/index?" + App.getShareUrlParams()
     };
   },
 

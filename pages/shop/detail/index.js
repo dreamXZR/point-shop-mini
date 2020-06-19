@@ -40,9 +40,8 @@ Page({
   onShareAppMessage() {
     let _this = this;
     // 构建页面参数
-    let params = App.urlEncode({
-      'shop_id': _this.data.detail.shop_id,
-      'referee_id': App.getUserId()
+    let params = App.getShareUrlParams({
+      'shop_id': _this.data.detail.shop_id
     });
     return {
       title: _this.data.detail.article_title,
@@ -64,13 +63,13 @@ Page({
    * 查看位置
    */
   onOpenLocation() {
-    let _this = this;
-    console.log(
-      String(_this.data.detail.latitude)
-    );
+    let _this = this,
+      detail = _this.data.detail;
     wx.openLocation({
-      latitude: Number(_this.data.detail.latitude),
-      longitude: Number(_this.data.detail.longitude),
+      name: detail.shop_name,
+      address: detail.region.province + detail.region.city + detail.region.region + detail.address,
+      longitude: Number(detail.longitude),
+      latitude: Number(detail.latitude),
       scale: 15
     });
   },

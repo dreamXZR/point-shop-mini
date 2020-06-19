@@ -45,9 +45,8 @@ Page({
    */
   onShareAppMessage() {
     // 构建页面参数
-    let params = App.urlEncode({
-      'article_id': this.data.detail.article_id,
-      'referee_id': App.getUserId()
+    let params = App.getShareUrlParams({
+      'article_id': this.data.detail.article_id
     });
     return {
       title: this.data.detail.article_title,

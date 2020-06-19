@@ -265,6 +265,15 @@ Page({
         App.showSuccess(result.msg);
         _this.setData(result.data);
       });
+    } else if(submitType === 'exchangeNow'){
+      //积分兑换
+      App._post_form('point_goods/exchange', {
+        goods_id: _this.data.goods_id,
+        goods_num: _this.data.goods_num,
+        goods_sku_id: _this.data.goods_sku_id,
+      }, function (result) {
+        App.showSuccess(result.msg);
+      });
     }
   },
 

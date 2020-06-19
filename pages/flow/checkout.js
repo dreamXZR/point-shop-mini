@@ -45,7 +45,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    //console.log(options);
+    console.log(options);
     let _this = this;
     // 当前页面参数
     _this.data.options = options;
@@ -204,7 +204,8 @@ Page({
         goods_num: options.goods_num,
         goods_sku_id: options.goods_sku_id,
         delivery: _this.data.currentDelivery,
-        shop_id: _this.data.selectedShopId,
+        //shop_id: _this.data.selectedShopId,
+        shop_id:options.shop_id,
         coupon_id: _this.data.selectCoupon.couponId,
         remark: _this.data.remark
       }, function(result) {

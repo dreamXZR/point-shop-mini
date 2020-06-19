@@ -2,24 +2,24 @@
 
   <!-- 首页 -->
   <form bindsubmit="_onTargetPage" report-submit="true">
-    <button formType="submit" data-index="0" class="nav-item btn-normal {{ isShow ? 'show_80' : (transparent ? '' : 'hide_80') }}">
+    <button formType="submit" data-index="0" class="nav-item btn-normal {{ isShow ? 'show_60' : (transparent ? '' : 'hide_80') }}">
       <text class="iconfont icon-home"></text>
     </button>
   </form>
 
   <!-- 分类页 -->
   <form bindsubmit="_onTargetPage" report-submit="true">
-    <button formType="submit" data-index="1" class="nav-item btn-normal {{ isShow ? 'show_60' : (transparent ? '' : 'hide_60') }}">
+    <button formType="submit" data-index="1" class="nav-item btn-normal {{ isShow ? 'show_40' : (transparent ? '' : 'hide_60') }}">
       <text class="iconfont icon-cate"></text>
     </button>
   </form>
 
   <!-- 购物车 -->
-  <form bindsubmit="_onTargetPage" report-submit="true">
+  <!-- <form bindsubmit="_onTargetPage" report-submit="true">
     <button formType="submit" data-index="2" class="nav-item btn-normal {{ isShow ? 'show_40' : (transparent ? '' : 'hide_40') }}">
       <text class="iconfont icon-cart"></text>
     </button>
-  </form>
+  </form>  -->
 
   <!-- 个人中心 -->
   <form bindsubmit="_onTargetPage" report-submit="true">

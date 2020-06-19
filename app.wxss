@@ -238,7 +238,7 @@ page {
   text-align: center;
   line-height: 92rpx;
 }
-.point-order-bt {
+.all-order-bt {
   width: 100%;
   background: linear-gradient(to right, #fa1e8c 0, #fc1e56 100%);
   color: #fff;

@@ -69,7 +69,7 @@ Page({
    */
   getGoodsDetail: function() {
     let _this = this;
-    App._get('point_goods/detail', {
+    App._get('goods/detail', {
       goods_id: _this.data.goods_id
     }, function(result) {
       // 初始化商品详情数据
@@ -242,6 +242,7 @@ Page({
     let _this = this,
       submitType = e.currentTarget.dataset.type;
     if (submitType === 'buyNow') {
+      var shop_id = _this.data.detail.shop_id;
       // 立即购买
       wx.navigateTo({
         url: '../flow/checkout?' + util.urlEncode({
@@ -249,6 +250,7 @@ Page({
           goods_id: _this.data.goods_id,
           goods_num: _this.data.goods_num,
           goods_sku_id: _this.data.goods_sku_id,
+          shop_id: shop_id
         }),
         success() {
           // 关闭弹窗
@@ -264,15 +266,6 @@ Page({
       }, function(result) {
         App.showSuccess(result.msg);
         _this.setData(result.data);
-      });
-    } else if(submitType === 'exchangeNow'){
-      //积分兑换
-      App._post_form('point_goods/exchange', {
-        goods_id: _this.data.goods_id,
-        goods_num: _this.data.goods_num,
-        goods_sku_id: _this.data.goods_sku_id,
-      }, function (result) {
-        App.showSuccess(result.msg);
       });
     }
   },

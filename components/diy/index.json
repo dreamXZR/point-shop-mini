@@ -16,6 +16,7 @@
     "diy-notice": "./notice/notice",
     "diy-service": "./service/service",
     "diy-richText": "./richText/richText",
-    "diy-sharingGoods": "./sharingGoods/sharingGoods"
+    "diy-sharingGoods": "./sharingGoods/sharingGoods",
+    "diy-shop": "./shop/index"
   }
 }
