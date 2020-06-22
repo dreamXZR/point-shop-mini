@@ -15,7 +15,7 @@
           <image src="{{ user.avatarUrl }}"></image>
         </view>
         <view class="user-nickName f-32">{{ user.nickName }}</view>
-        <view class="user-referee f-24 col-9">{{ words.index.words.referee.value }}：{{ dealer.referee ? dealer.referee.nickName : '平台' }}</view>
+        <view class="user-referee f-24 col-9">店铺名称：{{ dealer.shop_name}}</view>
       </view>
       <view class="base__capital dis-flex flex-dir-column">
         <!-- 佣金卡片 -->
@@ -84,7 +84,7 @@
     <view class="no-icon dis-flex flex-x-center">
       <image src="/images/not-dealer.png"></image>
     </view>
-    <view class="no-msg dis-flex flex-x-center f-30" style="">{{ words.index.words.not_dealer.value }}</view>
+    <view class="no-msg dis-flex flex-x-center f-30" style="">您还不是店家，请先提交申请</view>
     <!-- 立即申请 -->
     <view class="no-submit form-submit dis-flex flex-x-center">
       <form bindsubmit="triggerApply" report-submit="true">

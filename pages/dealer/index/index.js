@@ -33,13 +33,10 @@ Page({
    */
   getDealerCenter: function() {
     let _this = this;
-    App._get('user.dealer/center', {}, function(result) {
+    App._get('shop.settled/center', {}, function(result) {
       let data = result.data;
       data.isData = true;
       // 设置当前页面标题
-      wx.setNavigationBarTitle({
-        title: data.words.index.title.value
-      });
       _this.setData(data);
     });
   },

@@ -32,7 +32,7 @@ Page({
    */
   getDealerWithdraw: function() {
     let _this = this;
-    App._get('user.dealer/withdraw', {}, function(result) {
+    App._get('shop.settled/withdraw', {}, function(result) {
       let data = result.data;
       data.isData = true;
       // 设置当前页面标题
@@ -73,7 +73,7 @@ Page({
     // 提现方式
     values['pay_type'] = _this.data.payment;
     // 数据提交
-    App._post_form('user.dealer.withdraw/submit', {
+    App._post_form('shop.settled/withdraw_submit', {
       data: JSON.stringify(values)
     }, function(result) {
       // 提交成功

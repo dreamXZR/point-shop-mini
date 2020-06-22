@@ -31,7 +31,7 @@ Page({
    */
   getApplyState: function() {
     let _this = this;
-    App._get('user.dealer/apply', {
+    App._get('shop.settled/apply', {
       referee_id: _this.getRefereeid()
     }, function(result) {
       let data = result.data;
@@ -41,10 +41,6 @@ Page({
           url: '../index/index'
         });
       }
-      // 设置当前页面标题
-      wx.setNavigationBarTitle({
-        title: data.words.apply.title.value
-      });
       data.isData = true;
       _this.setData(data);
     });
@@ -87,7 +83,11 @@ Page({
 
     // 记录formId
     App.saveFormId(e.detail.formId);
-
+    //验证店铺名称
+    if (!values.shop_name || values.shop_name.length < 1) {
+      App.showError('请填写店铺名称');
+      return false;
+    }
     // 验证姓名
     if (!values.name || values.name.length < 1) {
       App.showError('请填写姓名');
@@ -101,10 +101,10 @@ Page({
     }
 
     // 验证是否阅读协议
-    if (!_this.data.is_read) {
-      App.showError('请先阅读分销商申请协议');
-      return false;
-    }
+    // if (!_this.data.is_read) {
+    //   App.showError('请先阅读分销商申请协议');
+    //   return false;
+    // }
 
     // 按钮禁用
     _this.setData({
@@ -112,7 +112,7 @@ Page({
     });
 
     // 数据提交
-    App._post_form('user.dealer.apply/submit', values, function() {
+    App._post_form('shop.settled/submit', values, function() {
       // 获取分销商申请状态
       _this.getApplyState();
     }, null, function() {

@@ -34,7 +34,7 @@ Page({
    */
   getWithdrawList: function(isNextPage, page) {
     let _this = this;
-    App._get('user.dealer.withdraw/lists', {
+    App._get('shop.settled/lists', {
       status: _this.data.dataType,
       page: page || 1,
     }, function(result) {

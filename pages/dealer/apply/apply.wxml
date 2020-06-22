@@ -13,9 +13,9 @@
         <view class="form-box dis-flex flex-dir-column">
           <form bindsubmit="formSubmit" report-submit="true">
             <view class="form-field dis-flex flex-y-center">
-              <view class="field-label">邀请人</view>
-              <view class="field-input">
-                <text>{{ referee_name }}（请核对）</text>
+              <view class="field-label">店铺名称</view>
+             <view class="field-input flex-box">
+                <input name="shop_name" placeholder="请输入店铺名称" value="{{shop_name}}"></input>
               </view>
             </view>
             <view class="form-field dis-flex flex-y-center">
@@ -31,16 +31,16 @@
               </view>
             </view>
             <!-- 申请协议 -->
-            <view class="form-license dis-flex flex-x-center flex-y-center">
+            <!-- <view class="form-license dis-flex flex-x-center flex-y-center">
               <view class="license-radio dis-flex flex-y-center" catchtap="toggleSetRead">
                 <text class="license-icon  {{ is_read ? 'c-violet' : 'col-bb' }} f-38 iconfont icon-radio"></text>
                 <text class="f-28 col-80">我已阅读并了解</text>
               </view>
-              <text catchtap="toggleApplyLicense" class="f-28 c-violet">【{{ words.apply.words.license.value }}】</text>
-            </view>
+              <text catchtap="toggleApplyLicense" class="f-28 c-violet">【入驻店家申请协议】</text>
+            </view> -->
             <!-- 立即申请 -->
             <view class="form-submit dis-flex flex-x-center">
-              <button formType="submit" disabled="{{ disabled }}">{{ words.apply.words.submit.value }}</button>
+              <button formType="submit" disabled="{{ disabled }}">申请成为店家</button>
             </view>
           </form>
         </view>
