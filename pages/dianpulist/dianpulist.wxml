@@ -1,0 +1,115 @@
+<!-- 轮播图 -->
+<view class="diy-banner">
+  <swiper class="banner-box swiper-box dot-{{ itemStyle.btnShape }}" autoplay="{{ autoplay }}" circular="{{ true }}" duration="{{ duration }}"style="height: {{ imgHeights[imgCurrent] }}rpx" indicator-color="#fff" indicator-active-color="#000" indicator-dots="ture">
+  <swiper-item wx:for="{{imgList}}">
+    <image catchtap="navigationTo" class="slide-image" src="{{item.file_path}}">
+    </image>
+  </swiper-item>
+  </swiper>
+</view>
+<!-- 分类 -->
+<scroll-view scroll-x="true">  
+<view class="uploadWrap" scroll-x="true">  
+  <view class="upload_Item f-28 onelist-hidden" >
+    <view class="upload_Item-image">
+      <image src="http://test.juweihuiguanli.top/uploads/202006302123070b1b86485.jpg">
+      </image>
+
+    </view>
+    <view>
+      美食店铺
+    </view>
+  </view>  
+  <view class="upload_Item f-28 onelist-hidden" >
+    <view class="upload_Item-image">
+      <image src="http://test.juweihuiguanli.top/uploads/202006302123070b1b86485.jpg">
+      </image>
+
+    </view>
+    <view>
+      美食店铺
+    </view>
+  </view>
+  <view class="upload_Item f-28 onelist-hidden" >
+    <view class="upload_Item-image">
+      <image src="http://test.juweihuiguanli.top/uploads/202006302123070b1b86485.jpg">
+      </image>
+
+    </view>
+    <view>
+      美食店铺
+    </view>
+  </view>
+  <view class="upload_Item f-28 onelist-hidden" >
+    <view class="upload_Item-image">
+      <image src="http://test.juweihuiguanli.top/uploads/202006302123070b1b86485.jpg">
+      </image>
+
+    </view>
+    <view>
+      美食店铺
+    </view>
+  </view>
+  <view class="upload_Item f-28 onelist-hidden" >
+    <view class="upload_Item-image">
+      <image src="http://test.juweihuiguanli.top/uploads/202006302123070b1b86485.jpg">
+      </image>
+
+    </view>
+    <view>
+      美食店铺
+    </view>
+  </view>
+  <view class="upload_Item f-28 onelist-hidden" >
+    <view class="upload_Item-image">
+      <image src="http://test.juweihuiguanli.top/uploads/202006302123070b1b86485.jpg">
+      </image>
+
+    </view>
+    <view>
+      美食店铺
+    </view>
+  </view>
+  
+</view>  
+</scroll-view> 
+
+<view class="container b-f">
+  <view class="shop-list">
+    <view wx:for="{{ shopList }}" wx:key="this" catchtap="onSelectedShop" data-id="{{ item.shop_id }}" class="shop-item dis-flex flex-y-center">
+      <view class="shop-item__content flex-box">
+        <view class="shop-item__title">
+          <text>{{ item.shop_name }}</text>
+        </view>
+        <view class="shop-item__address">
+          <text>地址：{{ item.region.province }}{{ item.region.city }}{{ item.region.region }}{{ item.address }}</text>
+        </view>
+        <view class="shop-item__phone">
+          <text>联系电话：{{ item.phone }}</text>
+        </view>
+        <view class="shop-item__distance">
+          <block wx:if="{{ item.distance }}">
+            <text class="iconfont icon-dingwei"></text>
+            <text class="f-24">{{ item.distance_unit }}</text>
+          </block>
+        </view>
+      </view>
+      <!-- 选中状态 -->
+      <!-- <view wx:if="{{ item.shop_id == selectedId }}" class="shop-item__right">
+        <text class="iconfont icon-iconfontduihaocopy"></text>
+      </view> -->
+    </view>
+  </view>
+  <!-- 无数据提供的页面 -->
+  <view wx:if="{{ !shopList.length }}">
+    <view class="yoshop-notcont">
+      <text class="iconfont icon-wushuju"></text>
+      <text class="cont">亲，暂无店铺哦</text>
+    </view>
+  </view>
+  <!-- 定位按钮 -->
+  <view wx:if="{{ !isAuthor }}" class="widget-location dis-flex flex-x-center flex-y-center" catchtap="onAuthorize">
+    <text class="iconfont icon-locate"></text>
+  </view>
+</view>
+<zan-toptips id="zan-toptips" content="{{ content }}" />

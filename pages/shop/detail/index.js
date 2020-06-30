@@ -11,7 +11,10 @@ Page({
     // 门店详情
     detail: {},
 
+    list: {}, // 商品列表数据
+    
   },
+  
 
   /**
    * 生命周期函数--监听页面加载
@@ -31,6 +34,7 @@ Page({
       shop_id
     }, function(result) {
       _this.setData(result.data);
+
     });
   },
 

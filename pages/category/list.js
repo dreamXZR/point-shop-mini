@@ -1,6 +1,12 @@
 const App = getApp();
 
 Page({
+  properties: {
+    itemIndex: String,
+    itemStyle: Object,
+    params: Object,
+    dataList: Object
+  },
   data: {
     scrollHeight: null,
 
@@ -36,6 +42,19 @@ Page({
       _this.getGoodsList();
     });
 
+  },
+  methods: {
+
+    /**
+     * 跳转商品详情页
+     */
+    _onTargetGoods(e) {
+      // 记录formid
+      App.saveFormId(e.detail.formId);
+      wx.navigateTo({
+        url: '/pages/sharing/goods/index?goods_id=' + e.detail.target.dataset.id,
+      });
+    },
   },
 
   /**
