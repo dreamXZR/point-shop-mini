@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "选择店铺",
+  "navigationBarTitleText": "店铺列表",
     "usingComponents": {
       "zan-toptips": "../../components/toptips/index"
     }

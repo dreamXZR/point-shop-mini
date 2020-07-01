@@ -16,6 +16,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+
+    // 分类列表
+    categoryList: [],
+    // 当前的分类id (0则代表首页)
+    category_id: 0,
     selectedId: -1,
     isAuthor: true,
 
@@ -82,17 +87,47 @@ Page({
     _this.setData({
       selectedId: options.selected_id
     });
-    // 获取默认门店列表
-    _this.getShopList();
     // 获取店铺轮播
     _this.getimgList();
+    this.getShopClassify();
+    // 获取默认门店列表
+    _this.getShopList();
+    
     
     // 获取用户坐标
     _this.getLocation((res) => {
       _this.getShopList(res.longitude, res.latitude);
     });
   },
-
+  /**
+   * Api：获取店铺分类
+   */
+  getShopClassify(){
+    let _this = this;
+    // 获取文章首页
+    App._get('shopClassify/index', {}, function(result) {
+      console.log(result.data)
+      _this.setData({
+        categoryList: result.data.list
+      });
+    });
+  },
+  /**
+   * Api：切换导航栏
+   */
+  onSwitchTab: function(e) {
+    let _this = this;
+    // 第一步：切换当前的分类id
+    _this.setData({
+      category_id: e.currentTarget.dataset.id,
+      articleList: {},
+      page: 1,
+      no_more: false,
+      isLoading: true,
+    });
+    // 第二步：更新当前的文章列表
+    _this.getShopList();
+  },
   /**
    * 获取门店列表
    */

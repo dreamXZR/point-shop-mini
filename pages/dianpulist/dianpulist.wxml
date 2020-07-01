@@ -7,72 +7,18 @@
   </swiper-item>
   </swiper>
 </view>
-<!-- 分类 -->
-<scroll-view scroll-x="true">  
-<view class="uploadWrap" scroll-x="true">  
-  <view class="upload_Item f-28 onelist-hidden" >
-    <view class="upload_Item-image">
-      <image src="http://test.juweihuiguanli.top/uploads/202006302123070b1b86485.jpg">
-      </image>
-
+<!-- 分类tab -->
+<view class="header">
+  <scroll-view scroll-x scroll-left style="height: 100%;">
+    <view class="cs {{ category_id ==  0 ? 'active' : '' }}" catchtap="onSwitchTab" data-id="0">
+      <text>全部</text>
     </view>
-    <view>
-      美食店铺
+    <!-- 分类列表 -->
+    <view class="cs {{  item.category_id == category_id ? 'active' : '' }}" catchtap="onSwitchTab" wx:for="{{ categoryList }}" wx:key="this" data-id="{{ item.category_id }}">
+      <text>{{ item.name }}</text>
     </view>
-  </view>  
-  <view class="upload_Item f-28 onelist-hidden" >
-    <view class="upload_Item-image">
-      <image src="http://test.juweihuiguanli.top/uploads/202006302123070b1b86485.jpg">
-      </image>
-
-    </view>
-    <view>
-      美食店铺
-    </view>
-  </view>
-  <view class="upload_Item f-28 onelist-hidden" >
-    <view class="upload_Item-image">
-      <image src="http://test.juweihuiguanli.top/uploads/202006302123070b1b86485.jpg">
-      </image>
-
-    </view>
-    <view>
-      美食店铺
-    </view>
-  </view>
-  <view class="upload_Item f-28 onelist-hidden" >
-    <view class="upload_Item-image">
-      <image src="http://test.juweihuiguanli.top/uploads/202006302123070b1b86485.jpg">
-      </image>
-
-    </view>
-    <view>
-      美食店铺
-    </view>
-  </view>
-  <view class="upload_Item f-28 onelist-hidden" >
-    <view class="upload_Item-image">
-      <image src="http://test.juweihuiguanli.top/uploads/202006302123070b1b86485.jpg">
-      </image>
-
-    </view>
-    <view>
-      美食店铺
-    </view>
-  </view>
-  <view class="upload_Item f-28 onelist-hidden" >
-    <view class="upload_Item-image">
-      <image src="http://test.juweihuiguanli.top/uploads/202006302123070b1b86485.jpg">
-      </image>
-
-    </view>
-    <view>
-      美食店铺
-    </view>
-  </view>
-  
-</view>  
-</scroll-view> 
+  </scroll-view>
+</view>
 
 <view class="container b-f">
   <view class="shop-list">
