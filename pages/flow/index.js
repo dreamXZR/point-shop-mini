@@ -233,7 +233,7 @@ Page({
       return false;
     }
     wx.navigateTo({
-      url: '../flow/checkout?order_type=cart&cart_ids=' + cartIds
+      url: '../flow/checkout?order_type=cart&cart_ids=' + cartIds + '&shop_id=' + _this.data.goods_list[0].shop_id
     });
   },
 

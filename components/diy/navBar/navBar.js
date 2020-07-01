@@ -27,6 +27,14 @@ Component({
      * 跳转到指定页面
      */
     navigationTo: function(e) {
+      var tabbar_arr = new Array('pages/index/index','pages/pointCategory/index');
+      for(var i in tabbar_arr){
+        if(tabbar_arr[i]==e.currentTarget.dataset.url){
+          wx.switchTab({
+            url: '/'+tabbar_arr[i]
+          })
+        }
+    }
       App.navigationTo(e.currentTarget.dataset.url);
     },
 

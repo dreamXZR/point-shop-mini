@@ -8,6 +8,7 @@ Page({
    */
   data: {
     selectedId: -1,
+    shop_id: -1,
     isAuthor: true,
 
     shopList: [] // 门店列表
@@ -20,10 +21,11 @@ Page({
     let _this = this;
     // 记录已选中的id
     _this.setData({
-      selectedId: options.selected_id
+      selectedId: options.selected_id,
+      shop_id : options.shop_id
     });
     // 获取默认门店列表
-    _this.getShopList();
+    _this.getShopList(options.shop_id);
     // 获取用户坐标
     _this.getLocation((res) => {
       _this.getShopList(res.longitude, res.latitude);
@@ -33,11 +35,12 @@ Page({
   /**
    * 获取门店列表
    */
-  getShopList(longitude, latitude) {
+  getShopList(shop_id,longitude, latitude) {
     let _this = this;
     App._get('shop/lists', {
       longitude: longitude || '',
-      latitude: latitude || ''
+      latitude: latitude || '',
+      shop_id:_this.data.shop_id
     }, (result) => {
       _this.setData({
         shopList: result.data.list
