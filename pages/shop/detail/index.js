@@ -12,6 +12,17 @@ Page({
     detail: {},
 
     list: {}, // 商品列表数据
+    showView: true, // 列表显示方式
+    arrange: "arrange", // 列表显示方式class
+
+    sortType: 'all', // 排序类型
+    sortPrice: false, // 价格从低到高
+
+    option: {}, // 当前页面参数
+    no_more: false, // 没有更多数据
+    isLoading: true, // 是否正在加载中
+
+    page: 1, // 当前页码
     
   },
   
@@ -19,10 +30,17 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
+  onLoad(option) {
     let _this = this;
-    // 获取门店详情
-    _this.getShopDetail(options.shop_id);
+   
+    _this.setData({
+      option
+    }, function() {
+      // 获取商品列表
+      _this.getGoodsList();
+       // 获取门店详情
+    _this.getShopDetail(option.shop_id);
+    });
   },
 
   /**
@@ -75,6 +93,38 @@ Page({
       longitude: Number(detail.longitude),
       latitude: Number(detail.latitude),
       scale: 15
+    });
+  },
+
+   /**
+   * 获取商品列表
+   * @param {bool} isPage 是否分页
+   * @param {number} page 指定的页码
+   */
+  getGoodsList: function(isPage, page) {
+    let _this = this;
+
+    App._get('goods/lists', {
+      page: page || 1,
+      sortType: this.data.sortType,
+      sortPrice: this.data.sortPrice ? 1 : 0,
+      category_id: this.data.option.category_id || 0,
+      search: this.data.option.search || '',
+      shop_id:_this.data.option.shop_id
+    }, function(result) {
+      let resList = result.data.list,
+        dataList = _this.data.list;
+      if (isPage == true) {
+        _this.setData({
+          'list.data': dataList.data.concat(resList.data),
+          isLoading: false,
+        });
+      } else {
+        _this.setData({
+          list: resList,
+          isLoading: false,
+        });
+      }
     });
   },
 

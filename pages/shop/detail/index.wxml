@@ -1,0 +1,80 @@
+<view wx:if="{{ detail.shop_id }}" class="container">
+  <view class="header">
+    <view class="shop-logo">
+      <image src="{{ detail.logo.file_path }}"></image>
+    </view>
+    <view class="shop-name">
+      <text>{{ detail.shop_name }}</text>
+    </view>
+    <view wx:if="{{ detail.summary }}" class="shop-summary dis-flex">
+      <text>门店简介：{{ detail.summary }}</text>
+    </view>
+  </view>
+  <!-- <view class="content">
+    <view class="content-item dis-flex flex-y-center">
+      <view class="content-item__icon dis-flex">
+        <text class="iconfont icon-shijian"></text>
+      </view>
+      <view class="content-item__text flex-box dis-flex">
+        <text class="f-26">{{ detail.shop_hours }}</text>
+      </view>
+    </view>
+    <view catchtap="onOpenLocation" class="content-item dis-flex flex-y-center">
+      <view class="content-item__icon dis-flex">
+        <text class="iconfont icon-dingwei"></text>
+      </view>
+      <view class="content-item__text flex-box dis-flex">
+        <text class="f-26">{{detail.region.province}}{{detail.region.city}}{{detail.region.region}}{{detail.address}}</text>
+      </view>
+      <view class="content-item__arrow dis-flex">
+        <text class="iconfont icon-xiangyoujiantou user-orderJtou"></text>
+      </view>
+    </view>
+    <view catchtap="onMakePhoneCall" class="content-item dis-flex flex-y-center">
+      <view class="content-item__icon dis-flex">
+        <text class="iconfont icon-dianhua"></text>
+      </view>
+      <view class="content-item__text flex-box dis-flex">
+        <text class="f-26">{{ detail.phone }}</text>
+      </view>
+      <view class="content-item__arrow dis-flex">
+        <text class="iconfont icon-xiangyoujiantou user-orderJtou"></text>
+      </view>
+    </view>
+  </view> -->
+  <!-- 商品列表-->
+  <!-- 商品列表 -->
+  <scroll-view bindscrolltolower="bindDownLoad" scroll-y style="height: {{scrollHeight}}px; width: 750rpx;" wx:if="{{list.data.length > 0}}">
+    <view class="new">
+      <view class="category-list {{ arrange }}">
+        <navigator class="list b-f" hover-class="none" url="../../goods/index?goods_id={{item.goods_id}}" wx:for="{{list.data}}" wx:key="list">
+          <view class="left">
+            <view class="img">
+              <image class="goodsImg" mode="scaleToFill" src="{{item.image[0].file_path}}"></image>
+            </view>
+          </view>
+          <view class="right">
+            <view class="cont">
+              <text class="f-30 title twolist-hidden m-top10">{{item.goods_name}}</text>
+              <view class="price f-32 col-m m-top10">
+                价格：￥{{item.sku[0].goods_price}}
+                <text class="del f-22" wx:if="{{item.sku[0].line_price>0}}">{{item.sku[0].line_price}}</text>
+              </view>
+              <view class="price f-32 col-m m-top10">
+                获取积分: {{item.exchange_points}}
+              </view>
+            </view>
+          </view>
+        </navigator>
+      </view>
+    </view>
+    <view wx:if="{{ no_more }}" class="no-more f-30">亲, 没有更多了</view>
+  </scroll-view>
+  <!-- 无数据 -->
+  <view wx:if="{{ !isLoading && !list.data.length }}" class="yoshop-notcont" >
+    <view class="img">
+      <image mode="aspectFit" src="../../../images/no_content.png"></image>
+    </view>
+    <text class="cont">亲, 没有相关内容</text>
+  </view>
+</view>
