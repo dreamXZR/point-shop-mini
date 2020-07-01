@@ -132,9 +132,10 @@ Page({
    */
   onSelectExtractPoint() {
     let _this = this,
+    options = _this.data.options,
       selectedId = _this.data.selectedShopId;
     wx.navigateTo({
-      url: '../_select/extract_point/index?selected_id=' + selectedId
+      url: '../_select/extract_point/index?selected_id=' + selectedId + '&shop_id=' + options.shop_id
     });
   },
 

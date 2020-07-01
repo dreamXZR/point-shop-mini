@@ -1,3 +1,92 @@
+/* 顶部选项卡 */
+
+.header {
+  display: flex;
+  position: fixed;
+  /* top: 316rpx; */
+  width: 100%;
+  height: 88rpx;
+  color: #333;
+  font-size: 28rpx;
+  background: #fff;
+  border-bottom: 1rpx solid #e4e4e4;
+  z-index: 100;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.header .cs {
+  display: inline-block;
+  padding: 0 15rpx;
+  text-align: center;
+  min-width: 20%;
+  height: 87rpx;
+  line-height: 88rpx;
+  box-sizing: border-box;
+}
+
+.header .cs text {
+  display: block;
+  height: 100%;
+}
+
+.header .cs.active text {
+  color: #fd4a5f;
+  border-bottom: 2rpx solid #fd4a5f;
+}
+/* common.wxss */
+@import "/utils/common.wxss";
+
+/* 线下门店 */
+
+.shop-item {
+  padding: 16rpx 30rpx;
+  min-height: 180rpx;
+  font-size: 26rpx;
+  line-height: 1.5;
+  border-bottom: 1rpx solid #eee;
+  box-sizing: border-box;
+}
+
+.shop-item__logo {
+  margin-right: 30rpx;
+}
+
+.shop-item__logo image {
+  display: block;
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 0 30rpx rgba(0, 0, 0, 0.1); */
+}
+
+.shop-item__title {
+  font-size: 28rpx;
+  color: #fd4a5f;
+  margin-bottom: 10rpx;
+}
+
+.shop-item__address, .shop-item__phone {
+  color: #919396;
+}
+
+.shop-item__address {
+  width: 520rpx;
+}
+
+.shop-item__distance {
+  margin-top: 10rpx;
+  color: #c1c1c1;
+  height: 40rpx;
+}
+
+.shop-item__distance .iconfont {
+  color: #81838e;
+  margin-right: 6rpx;
+}
+
+
 page {
   background: #fff;
 }

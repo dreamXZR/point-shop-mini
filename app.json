@@ -49,6 +49,7 @@
     "pages/_select/extract_point/index",
     "pages/shop/detail/index",
     "pages/store/check/order"
+
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

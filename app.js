@@ -335,13 +335,13 @@ App({
    */
   saveFormId: function(formId) {
     let App = this;
-    console.log('saveFormId');
-    if (formId === 'the formId is a mock one') {
-      return false;
-    }
-    App._post_form('wxapp.formId/save', {
-      formId: formId
-    }, null, null, null, false);
+    //console.log('saveFormId');
+    // if (formId === 'the formId is a mock one') {
+    //   return false;
+    // }
+    // App._post_form('wxapp.formId/save', {
+    //   formId: formId
+    // }, null, null, null, false);
   },
 
   /**
