@@ -35,7 +35,7 @@ Page({
   },
 
   methods: {
-
+    
     /**
      * 计算图片高度
      */
@@ -86,7 +86,7 @@ Page({
     _this.getShopList();
     // 获取店铺轮播
     _this.getimgList();
-    
+    _this.gettoubu();
     // 获取用户坐标
     _this.getLocation((res) => {
       _this.getShopList(res.longitude, res.latitude);
@@ -105,12 +105,19 @@ Page({
       _this.setData({
         shopList: result.data.list,
       });
+      console.log(result.data.list)
 
     });
 
 
   },
-
+  // 头部名称
+  gettoubu() {
+    wx.setNavigationBarTitle({
+      title: '选择店铺' 
+    });
+  },
+  
 
   /**
    * 获取店铺轮播
@@ -127,7 +134,7 @@ Page({
         imgList: result.data,
 
       });
-      console.log(result.data)
+      // console.log(result.data)
       
     });
 

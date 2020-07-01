@@ -1,0 +1,24 @@
+<view class="pay-box">
+  <view class="pay-in">
+    <view class="pay-tit">
+      付款给
+    </view>
+    <view class="pay-name">
+      <view>
+        天津零食小铺
+      </view>
+    </view>
+    <view class="pay-img">
+      <image src="../../images/pay.png" style="width: 100%; height: 100%;"></image>
+    </view>
+    <view class="pay-money">
+
+      金额
+      <input class="pay-input" adjust-position="{{false}}" auto-focus="true" type="number" placeholder="￥" placeholder-style="font-size: 12px; padding-top: 3px;" bindfocus="inputFocus" bindblur="inputBlur"
+      bindinput="inputVal"/>
+    </view>
+  </view>
+  <view class="pay-btn" style="bottom: {{bottom_val}}px" bindtap="pay">
+    立即支付
+  </view>
+</view>

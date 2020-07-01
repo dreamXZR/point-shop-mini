@@ -1,5 +1,5 @@
 const App = getApp();
-const Toptips = require('../../../components/toptips/toptips');
+const Toptips = require('../../components/toptips/toptips');
 
 Page({
 
