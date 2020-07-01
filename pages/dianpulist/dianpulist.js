@@ -21,7 +21,6 @@ Page({
     categoryList: [],
     // 当前的分类id (0则代表首页)
     category_id: 0,
-    selectedId: -1,
     isAuthor: true,
 
     shopList: [],// 门店列表
@@ -89,11 +88,8 @@ Page({
     });
     // 获取店铺轮播
     _this.getimgList();
+    //获取店铺分类
     this.getShopClassify();
-    // 获取默认门店列表
-    _this.getShopList();
-    
-    
     // 获取用户坐标
     _this.getLocation((res) => {
       _this.getShopList(res.longitude, res.latitude);
@@ -125,8 +121,10 @@ Page({
       no_more: false,
       isLoading: true,
     });
-    // 第二步：更新当前的文章列表
-    _this.getShopList();
+    // 第二步：更新当前的店铺列表
+    _this.getLocation((res) => {
+      _this.getShopList(res.longitude, res.latitude);
+    });
   },
   /**
    * 获取门店列表
@@ -135,7 +133,8 @@ Page({
     let _this = this;
     App._get('shop/lists', {
       longitude: longitude || '',
-      latitude: latitude || ''
+      latitude: latitude || '',
+      shop_classify_id : _this.data.category_id,
     }, (result) => {
       _this.setData({
         shopList: result.data.list,
@@ -218,31 +217,10 @@ Page({
   /**
    * 选择门店
    */
-  onSelectedShop(e) {
-    let _this = this,
-        selectedId = e.currentTarget.dataset.id;
-      // 设置选中的id
-      _this.setData({
-        selectedId
-      });
-      // console.log(selectedId)
-      // App.saveFormId(e.detail.formId);
-      wx.navigateTo({
-        url: '/pages/shop/detail/index?shop_id=' + selectedId,
-      });
-      // 设置上级页面的门店id
-      // let pages = getCurrentPages();
-      // if (pages.length < 2) {
-      //   return false;
-      // }
-    // let prevPage = pages[pages.length - 2];
-    // prevPage.setData({
-    //   selectedShopId: selectedId
-    // });
-    // 返回上级页面
-    // wx.navigateBack({
-    //   delta: 1
-    // });
+  _onTargetDetail(e) {
+    wx.navigateTo({
+      url: '/pages/shop/detail/index?shop_id=' + e.detail.target.dataset.id,
+    });
   },
 
 })
