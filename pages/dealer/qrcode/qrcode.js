@@ -33,10 +33,6 @@ Page({
       title: '加载中',
     });
     App._get('user.dealer.qrcode/poster', {}, function(result) {
-      // 设置当前页面标题
-      wx.setNavigationBarTitle({
-        title: result.data.words.qrcode.title.value
-      })
       _this.setData(result.data);
     }, null, function() {
       wx.hideLoading();

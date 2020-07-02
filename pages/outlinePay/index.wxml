@@ -5,7 +5,7 @@
     </view>
     <view class="pay-name">
       <view>
-        天津零食小铺
+        {{ detail.shop_name }}
       </view>
     </view>
     <view class="pay-img">

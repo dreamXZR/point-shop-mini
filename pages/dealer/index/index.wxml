@@ -43,6 +43,14 @@
     <!-- 操作列表 -->
     <view class="widget widget__operat clear b-f">
       <view class="operat__item">
+        <navigator hover-class="none" url="../qrcode/qrcode">
+          <view class="item__icon">
+            <text class="iconfont icon-erweima" style="color:#5fa5ff;"></text>
+          </view>
+          <view class="item__text f-28">{{ words.qrcode.title.value }}</view>
+        </navigator>
+      </view>
+      <view class="operat__item">
         <navigator hover-class="none" url="../withdraw/list/list">
           <view class="item__icon">
             <text class="iconfont icon-zhangben" style="color:#F9BA21;"></text>
@@ -66,14 +74,7 @@
           <view class="item__text f-28">{{ words.team.title.value }}</view>
         </navigator>
       </view>
-      <view class="operat__item">
-        <navigator hover-class="none" url="../qrcode/qrcode">
-          <view class="item__icon">
-            <text class="iconfont icon-erweima" style="color:#5fa5ff;"></text>
-          </view>
-          <view class="item__text f-28">{{ words.qrcode.title.value }}</view>
-        </navigator>
-      </view>
+      
     </view>
   </view>
 </view>
