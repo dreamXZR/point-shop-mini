@@ -111,3 +111,35 @@
   color: #444;
   margin-left: 20rpx;
 }
+.clear{
+  clear: both;
+}
+.qianbao{
+  height: 100rpx;
+  background-color: #fff;
+  width: 100%;
+  padding: 25rpx;
+  color: #666;
+}
+.num{
+  color: red;
+  margin-bottom: 15rpx;
+}
+.qianbao-left{
+  display: flex;
+  justify-content : space-around;
+  text-align: center;
+  float: left;
+  width: 65%;
+  border-right: 1rpx solid #f0f0f0;
+  font-size: 12px;
+  
+}
+.qianbao-right {
+  text-align: center;
+  font-size: 12px;
+}
+.qianbao-right image{
+  width: 20px;
+  height: 20px;
+}

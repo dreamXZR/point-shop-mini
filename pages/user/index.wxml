@@ -61,6 +61,34 @@
       </view>
     </view>
   </view>
+  <!-- 钱包 -->
+  <view class="qianbao">
+    <view class="qianbao-left">
+      <view>
+        <view class="num">
+          0.00
+        </view>
+        <view>账户余额</view>
+      </view>
+      <view>
+        <view class="num">
+          0
+        </view>
+        <view>可用积分</view>
+      </view>
+    </view>
+    <view class="qianbao-right">
+      <view>
+        <view>
+          <image src="../../images/qianbao.png"></image>
+        </view>
+        <view>
+          我的钱包
+        </view>
+      </view>
+    </view>
+    <view class="clear"></view>
+  </view>
   <!-- 菜单列表 -->
   <view class="menus-list m-top20">
     <form wx:for="{{ menus }}" wx:key="this" bindsubmit="onTargetMenus" data-url="{{item.url}}" report-submit="true">
