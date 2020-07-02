@@ -48,7 +48,9 @@
     "pages/article/detail/index",
     "pages/_select/extract_point/index",
     "pages/shop/detail/index",
-    "pages/store/check/order"
+    "pages/store/check/order",
+    "pages/pointExchange/index",
+    "pages/outlinePay/index"
 
   ],
   "window": {

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "积分兑换",
+  "usingComponents": {
+    "zan-popup": "/components/popup/index"
+  }
+}
