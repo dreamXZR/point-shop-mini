@@ -295,7 +295,13 @@ page, .container {
   float: left;
 }
 
-.category-list.arrange .list .left .img image {
+.category-list.arrange .list .left .img  {
   width: 220rpx;
-  height: 220rpx;
+  height: 205rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+.category-list.arrange .list .left .img image {
+  width: 100%;
+  height: 100%;
 }

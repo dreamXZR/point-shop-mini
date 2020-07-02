@@ -44,7 +44,7 @@
   </view> -->
   <!-- 商品列表-->
   <!-- 商品列表 -->
-  <scroll-view bindscrolltolower="bindDownLoad" scroll-y style="height: {{scrollHeight}}px; width: 750rpx;" wx:if="{{list.data.length > 0}}">
+  <scroll-view bindscrolltolower="bindDownLoad" scroll-y style="height: {{scrollHeight}}px; width: 700rpx;" wx:if="{{list.data.length > 0}}">
     <view class="new">
       <view class="category-list {{ arrange }}">
         <navigator class="list b-f" hover-class="none" url="../../goods/index?goods_id={{item.goods_id}}" wx:for="{{list.data}}" wx:key="list">
@@ -55,12 +55,14 @@
           </view>
           <view class="right">
             <view class="cont">
-              <text class="f-30 title twolist-hidden m-top10">{{item.goods_name}}</text>
-              <view class="price f-32 col-m m-top10">
+              <text class="f-30 title twolist-hidden m-top20">{{item.goods_name}}
+                
+              </text>
+              <view class="price f-26 col-m m-top10">
                 价格：￥{{item.sku[0].goods_price}}
                 <text class="del f-22" wx:if="{{item.sku[0].line_price>0}}">{{item.sku[0].line_price}}</text>
               </view>
-              <view class="price f-32 col-m m-top10">
+              <view class="price f-26 col-m m-top10">
                 获取积分: {{item.exchange_points}}
               </view>
             </view>

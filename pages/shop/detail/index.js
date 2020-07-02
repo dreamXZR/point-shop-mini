@@ -114,11 +114,13 @@ Page({
     }, function(result) {
       let resList = result.data.list,
         dataList = _this.data.list;
+        console.log(result)
       if (isPage == true) {
         _this.setData({
           'list.data': dataList.data.concat(resList.data),
           isLoading: false,
         });
+        
       } else {
         _this.setData({
           list: resList,
