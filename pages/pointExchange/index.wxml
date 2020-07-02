@@ -1,0 +1,93 @@
+<view class="container">
+  <view class="goods-detail-box">
+    <view class="header f-28 col-3">
+      <view catchtap="bindHeaderTap" class="{{dataType==='no-exchange'?'active':''}}" data-type="no-exchange">
+        <text>未兑换</text>
+      </view>
+      <view bindtap="bindHeaderTap" class="{{dataType==='exchange'?'active':''}}" data-type="exchange">
+        <text>已兑换</text>
+      </view>
+    </view>
+    <scroll-view bindscrolltolower="bindDownLoad" scroll-y style="height: {{scrollHeight}}px; width: 750rpx;margin-top:88rpx;">
+      <view class="wrapper" wx:if="{{list.data.length > 0}}">
+        <!-- <view wx:if="{{list.length}}"> -->
+        <view class="m-top20" wx:for="{{list.data}}" wx:key="this" catchtap="navigateToDetail" data-id="{{item.order_id}}">
+          <view class="order-box b-f">
+            <view class="order-header dis-flex">
+              <view class="flex-box t-r">
+                <text class="cont">{{item.state_text}}</text>
+              </view>
+            </view>
+          </view>
+          <view class="order-box b-f">
+            <view class="order-cont dis-flex">
+              <view class="order-num">
+                <text>兑换时间：{{item.create_time}}</text>
+              </view>
+            </view>
+          </view>
+          <view class="order-box order-img_list">
+            <view class="order-shop">
+              <view class="order-list-box dis-flex">
+                <view class="left">
+                  <view class="dis-flex">
+                    <view class="order-shop-left">
+                      <image src="{{item.goods.image[0].file_path}}"></image>
+                    </view>
+                  </view>
+                </view>
+                 <view class="right dis-flex flex-x-center flex-y-center" style="flex:4;">
+                  <text class="goods-number">商品信息：{{item.goods.goods_name}}</text>
+                </view>
+                <view class="right dis-flex flex-x-center flex-y-center">
+                  <text class="goods-number">共{{item.exchange_number}}件</text>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="order-box b-f">
+            <view class="order-btn dis-flex">
+              <view class="order-left">
+              </view>
+              <view class="order-right">
+                <view class="btn-group dis-flex">
+                  <block>
+                    <!-- 订单核销码 -->
+                    <view wx:if="{{item.is_used == 0}}">
+                      <view catchtap="onExtractQRCode" class="btn-main" data-id="{{item.id}}" data-code="{{item.exchange_code}}">
+                        <text class="iconfont icon-qr-extract"></text>
+                        <text class="m-l-10">核销码</text>
+                      </view>
+                    </view>
+                  </block>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{ no_more }}" class="no-more f-30">亲, 没有更多了</view>
+      <view wx:if="{{ !isLoading && !list.data.length }}">
+        <view class="yoshop-notcont">
+          <text class="iconfont icon-wushuju"></text>
+          <text class="cont">亲，您还没有兑换信息哦！</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+
+  <!-- 核销码弹出层 -->
+  <zan-popup show="{{ showQRCodePopup }}" bindclose="onToggleQRCodePopup">
+    <view class="pop-qrcode pop-example__container">
+      <view class="pop-qrcode_title">
+        <text class="f-30">核销二维码</text>
+      </view>
+      <view class="pop-qrcode_content">
+        <image src="{{ QRCodeImage }}"></image>
+      </view>
+    </view>
+  </zan-popup>
+
+
+</view>
