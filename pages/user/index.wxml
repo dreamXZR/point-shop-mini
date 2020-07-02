@@ -66,25 +66,17 @@
     <view class="qianbao-left">
       <view>
         <view class="num">
-          0.00
-        </view>
-        <view>账户余额</view>
-      </view>
-      <view>
-        <view class="num">
-          0
+          {{userInfo.points}}
         </view>
         <view>可用积分</view>
       </view>
     </view>
     <view class="qianbao-right">
       <view>
-        <view>
-          <image src="../../images/qianbao.png"></image>
+        <view class="num">
+          {{userInfo.prepare_points}}
         </view>
-        <view>
-          我的钱包
-        </view>
+        <view>待领积分</view>
       </view>
     </view>
     <view class="clear"></view>
