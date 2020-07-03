@@ -1,5 +1,27 @@
 <view class="container">
   <view class="qrcode">
-    <image mode="widthFix" src="{{ qrcode }}" catchtap="previewImage"></image>
+    
+    <view class="qrcode-box">
+      <view class="qrcode-mingcheng">
+          <view class="touxiang">
+            <image src="{{ user.avatarUrl }}"></image>
+          </view>
+          <view style="margin-left: 30rpx;">
+            <view class="name f-32">
+              {{ user.nickName }}
+            </view>
+            <view class="referee f-24 col-9">店铺名称：{{ dealer.shop_name}}</view>
+          </view>
+          
+      </view>
+      <view style="text-align: center;">
+       
+       <image class="erweima" mode="widthFix" src="{{ qrcode }}" catchtap="previewImage"></image>
+      </view>
+      <view class="txt f-24 col-9">
+        扫一扫上面的二维码图案
+      </view>
+     
+    </view>
   </view>
 </view>

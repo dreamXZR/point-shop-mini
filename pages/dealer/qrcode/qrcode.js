@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    user: {},
 
   },
 
@@ -22,6 +23,20 @@ Page({
   onShow: function() {
     // 获取推广二维码
     this.getPoster();
+    // 获取分销商中心数据
+    this.getDealerCenter();
+  },
+  /**
+   * 获取分销商中心数据
+   */
+  getDealerCenter: function() {
+    let _this = this;
+    App._get('shop.settled/center', {}, function(result) {
+      let data = result.data;
+      data.isData = true;
+      // 设置当前页面标题
+      _this.setData(data);
+    });
   },
 
   /**
