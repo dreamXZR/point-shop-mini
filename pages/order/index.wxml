@@ -79,7 +79,7 @@
                     </view>
                     <!-- 订单核销码 -->
                     <view wx:if="{{ item.pay_status.value==20 && item.delivery_type.value == deliverys.EXTRACT.value && item.delivery_status.value == 10 }}">
-                      <view catchtap="onExtractQRCode" class="btn-main" data-id="{{item.order_id}}">
+                      <view catchtap="onExtractQRCode" class="btn-main" data-id="{{item.order_id}}" data-code="{{item.exchange_code}}">
                         <text class="iconfont icon-qr-extract"></text>
                         <text class="m-l-10">核销码</text>
                       </view>

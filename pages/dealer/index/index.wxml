@@ -14,8 +14,8 @@
         <view class="user-avatar">
           <image src="{{ user.avatarUrl }}"></image>
         </view>
-        <view class="user-nickName f-32">{{ user.nickName }}</view>
-        <view class="user-referee f-24 col-9">店铺名称：{{ dealer.shop_name}}</view>
+        <view class="user-nickName f-32">{{ dealer.shop_name }}</view>
+        <view class="user-referee f-24 col-9">店主:{{ user.nickName}}/剩余积分：{{dealer.points}}</view>
       </view>
       <view class="base__capital dis-flex flex-dir-column">
         <!-- 佣金卡片 -->
@@ -64,14 +64,6 @@
             <text class="iconfont icon-dingdan" style="color:#FF7575;"></text>
           </view>
           <view class="item__text f-28">{{ words.order.title.value }}</view>
-        </navigator>
-      </view>
-      <view class="operat__item">
-        <navigator hover-class="none" url="../team/team">
-          <view class="item__icon">
-            <text class="iconfont icon-tuandui" style="color:#59C78E;"></text>
-          </view>
-          <view class="item__text f-28">{{ words.team.title.value }}</view>
         </navigator>
       </view>
       

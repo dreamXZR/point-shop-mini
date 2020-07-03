@@ -88,12 +88,9 @@ Page({
     });
     // 获取店铺轮播
     _this.getimgList();
-// <<<<<<< HEAD
-    _this.gettoubu();
-// =======
+
     //获取店铺分类
     this.getShopClassify();
-// >>>>>>> 9b5cced4eebede42968c3833032bb2c408271981
     // 获取用户坐标
     _this.getLocation((res) => {
       _this.getShopList(res.longitude, res.latitude);
@@ -149,12 +146,6 @@ Page({
     });
 
 
-  },
-  // 头部名称
-  gettoubu() {
-    wx.setNavigationBarTitle({
-      title: '选择店铺' 
-    });
   },
   
 
