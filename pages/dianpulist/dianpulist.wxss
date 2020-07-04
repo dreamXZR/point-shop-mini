@@ -220,3 +220,38 @@ page {
   width: 88rpx;
   height: 88rpx;
 }
+.index-cont-search icon {
+  left: 0;
+  margin-left: 20rpx;
+}
+
+.index-search-box {
+  background: #fff;
+  padding: 18rpx 13rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.index-search {
+  border-bottom: 0;
+  background: #fff;
+  border-radius: 50rpx;
+  overflow: hidden;
+  position: relative;
+  font-size: 32rpx;
+  color: #999;
+  box-sizing: border-box;
+  height: 64rpx;
+  line-height: 64rpx;
+  margin: 0 10rpx;
+}
+
+.list-right {
+  width: 60rpx;
+}
+
+.list-right text {
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 40rpx;
+}
+

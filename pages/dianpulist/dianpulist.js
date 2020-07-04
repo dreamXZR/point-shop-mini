@@ -69,6 +69,23 @@ Page({
     },
 
     /**
+   * 商品搜索
+   */
+  triggerSearch: function() {
+    let pages = getCurrentPages();
+    // 判断来源页面
+    if (pages.length > 1 &&
+      pages[pages.length - 2].route === 'pages/search/index') {
+      wx.navigateBack();
+      return;
+    }
+    // 跳转到商品搜索
+    wx.navigateTo({
+      url: '../search/index',
+    })
+  },
+
+    /**
      * 跳转到指定页面
      */
     navigationTo: function(e) {
