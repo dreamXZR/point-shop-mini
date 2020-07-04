@@ -223,24 +223,30 @@ Page({
    * 查看核销二维码
    */
   onExtractQRCode(e) {
-    let _this = this,
-      order_id = e.currentTarget.dataset.id;
-    // 调用后台api获取核销二维码
-    wx.showLoading({
-      title: '加载中',
-    });
-    App._get('user.order/extractQrcode', {
-      order_id
-    }, (result) => {
-      // 设置二维码图片路径
-      _this.setData({
-        QRCodeImage: result.data.qrcode
-      });
-      // 显示核销二维码
-      _this.onToggleQRCodePopup();
-    }, null, () => {
-      wx.hideLoading();
-    });
+    let _this = this;
+    let code =  e.currentTarget.dataset.code;
+    wx.showModal({
+      title: "商品核销码",
+      content: code,
+      showCancel: false,
+    })
+    //   order_id = e.currentTarget.dataset.id;
+    // // 调用后台api获取核销二维码
+    // wx.showLoading({
+    //   title: '加载中',
+    // });
+    // App._get('user.order/extractQrcode', {
+    //   order_id
+    // }, (result) => {
+    //   // 设置二维码图片路径
+    //   _this.setData({
+    //     QRCodeImage: result.data.qrcode
+    //   });
+    //   // 显示核销二维码
+    //   _this.onToggleQRCodePopup();
+    // }, null, () => {
+    //   wx.hideLoading();
+    // });
   },
 
   /**

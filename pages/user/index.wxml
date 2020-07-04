@@ -70,14 +70,20 @@
         </view>
         <view>可用积分</view>
       </view>
-    </view>
-    <view class="qianbao-right">
       <view>
         <view class="num">
           {{userInfo.prepare_points}}
         </view>
         <view>待领积分</view>
       </view>
+    </view>
+    <view class="qianbao-right">
+      <navigator  url="./pointDetail/index">
+        <view>
+            <image src="../../images/qianbao.png"></image>
+        </view>
+        <view>积分详情</view>
+      </navigator>
     </view>
     <view class="clear"></view>
   </view>
