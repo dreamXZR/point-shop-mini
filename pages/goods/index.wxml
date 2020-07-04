@@ -18,6 +18,7 @@
           <!-- 商品名称 -->
           <view class="goods-title ">
             <text class="title f-30 twolist-hidden">{{detail.goods_name}}</text>
+            
           </view>
           <!-- 商品卖点 -->
           <view class="goods-selling-point">
@@ -27,6 +28,7 @@
             <text class="col-m f-26">￥</text>
             <text class="price col-m">{{goods_price}}</text>
             <text class="del" wx:if="{{line_price>0}}">￥{{line_price}}</text>
+            
           </view>
         </view>
         <view class="right goods__share">
@@ -40,6 +42,9 @@
       </view>
       <view class="goods-sales-box f-28 dis-flex col-8">
         <text class="flex-box num">销量：{{detail.goods_sales}}</text>
+        <text style="color: red;">距开始：{{countdown}}</text>
+        <!-- <text style="color: red;">距结束：{{countdown}}</text> -->
+
       </view>
     </view>
     <!-- 选择商品规格 -->
