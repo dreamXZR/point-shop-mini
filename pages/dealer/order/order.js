@@ -34,8 +34,7 @@ Page({
    */
   getWithdrawList: function(isNextPage, page) {
     let _this = this;
-    App._get('shop.settled/lists', {
-      status: _this.data.dataType,
+    App._get('shop/pointsInfo', {
       page: page || 1,
     }, function(result) {
       // 创建页面数据
@@ -53,35 +52,6 @@ Page({
     if (isNextPage == true && (typeof dataList !== 'undefined')) {
       data.list.data = dataList.data.concat(data.list.data)
     }
-    // 设置当前页面标题
-    wx.setNavigationBarTitle({
-      title: data.words.withdraw_list.title.value
-    })
-    // 导航栏数据
-    data['tabList'] = [{
-        value: -1,
-        text: data.words.withdraw_list.words.all.value,
-      }, {
-        value: 10,
-        text: data.words.withdraw_list.words.apply_10.value,
-      }, {
-        value: 20,
-        text: data.words.withdraw_list.words.apply_20.value,
-      },
-      {
-        value: 40,
-        text: data.words.withdraw_list.words.apply_40.value,
-      },
-      {
-        value: 30,
-        text: data.words.withdraw_list.words.apply_30.value,
-      }
-    ];
-    // 审核状态
-    data['applyStatus'] = {};
-    data['tabList'].forEach(function(item) {
-      data['applyStatus'][item.value] = item.text;
-    });
     return data;
   },
 
