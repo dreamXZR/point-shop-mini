@@ -248,7 +248,7 @@
 }
 
 .category-list.arrange .list .left {
-  width: 35%;
+  width: 250rpx;
   float: left;
 }
 
@@ -258,6 +258,37 @@
 }
 
 .category-list.arrange .list .left .img image {
-  width: 220rpx;
-  height: 220rpx;
+  width: 250rpx;
+  height: 250rpx;
 }
+
+
+.header {
+  width: 100%;
+  height: 88rpx;
+  border-bottom: 1rpx solid #e4e4e4;
+  display: flex;
+  background: #fff;
+  line-height: 88rpx;
+  position: fixed;
+  top: 100rpx;
+  z-index: 100;
+}
+
+.header view {
+  flex: 1;
+  text-align: center;
+  padding: 0 15rpx;
+}
+
+.header view text {
+  display: block;
+}
+
+.header view.active {
+  color: #fd4a5f;
+}
+
+/* .header view.active text {
+  border-bottom: 1px solid #fd4a5f;
+} */

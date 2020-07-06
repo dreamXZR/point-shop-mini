@@ -13,10 +13,13 @@ Page({
     countdown:'',    
     endDate2: '2020-07-05 13:57:00',
 
+    dataType: 'no-exchange', // 列表类型
+
 
     scrollHeight: null,
 
     showView: false, // 列表显示方式
+    showView1: true,
     arrange: "", // 列表显示方式class
 
     sortType: 'all', // 排序类型
@@ -111,11 +114,29 @@ Page({
   },
 
   /**
+   * 切换标签
+   */
+  bindHeaderTap: function(e) {
+    let _this = this;
+    _this.setData({
+      dataType: e.currentTarget.dataset.type,
+      list: {},
+      isLoading: true,
+      page: 1,
+      no_more: false,
+    });
+    // 获取列表
+    // this.getOrderList(e.currentTarget.dataset.type);
+    _this.getGoodsList();
+  },
+
+  /**
    * 切换排序方式
    */
   switchSortType: function(e) {
     let _this = this,
       newSortType = e.currentTarget.dataset.type,
+      
       newSortPrice = newSortType === 'price' ? !this.data.sortPrice : true;
 
     this.setData({
@@ -128,6 +149,7 @@ Page({
       // 获取商品列表
       _this.getGoodsList();
     });
+    console.log(e.currentTarget.dataset.type)
   },
 
   /**
@@ -137,6 +159,7 @@ Page({
     let _this = this;
     _this.setData({
       showView: !_this.data.showView,
+      showView1: !_this.data.showView1,
       arrange: _this.data.arrange ? "" : "arrange"
     });
   },
@@ -174,13 +197,13 @@ Page({
     let pages = getCurrentPages();
     // 判断来源页面
     if (pages.length > 1 &&
-      pages[pages.length - 2].route === 'pages/search/index') {
+      pages[pages.length - 2].route === 'pages/searchmiaosha/index') {
       wx.navigateBack();
       return;
     }
     // 跳转到商品搜索
     wx.navigateTo({
-      url: '../search/index',
+      url: '../searchmiaosha/index',
     })
   },
   countTime() {
