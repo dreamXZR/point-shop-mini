@@ -13,7 +13,7 @@ Page({
     countdown:'',    
     endDate2: '2020-07-05 13:57:00',
 
-    dataType: 'no-exchange', // 列表类型
+    dataType: 'on-going', // 列表类型
 
 
     scrollHeight: null,
@@ -76,11 +76,9 @@ Page({
   getGoodsList: function(isPage, page) {
     let _this = this;
 
-    App._get('goods/lists', {
+    App._get('seckill.goods/lists', {
       page: page || 1,
-      sortType: this.data.sortType,
-      sortPrice: this.data.sortPrice ? 1 : 0,
-      category_id: this.data.option.category_id || 0,
+      status: this.data.dataType,
       search: this.data.option.search || '',
     }, function(result) {
       let resList = result.data.list,
@@ -197,13 +195,13 @@ Page({
     let pages = getCurrentPages();
     // 判断来源页面
     if (pages.length > 1 &&
-      pages[pages.length - 2].route === 'pages/searchmiaosha/index') {
+      pages[pages.length - 2].route === 'pages/seckill/search/index') {
       wx.navigateBack();
       return;
     }
     // 跳转到商品搜索
     wx.navigateTo({
-      url: '../searchmiaosha/index',
+      url: './search/index',
     })
   },
   countTime() {

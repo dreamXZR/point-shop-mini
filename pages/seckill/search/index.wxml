@@ -7,7 +7,7 @@
             <icon color="rgba(180,180,180,1)" size="15" type="search"></icon>
           </view>
           <view class="right">
-            <input bindinput="getSearchContent" class="input" focus="true" placeholder="请输入您搜索的积分商品" placeholderStyle="color:#aba9a9" type="text"></input>
+            <input bindinput="getSearchContent" class="input" focus="true" placeholder="请输入您搜索的特惠商品" placeholderStyle="color:#aba9a9" type="text"></input>
           </view>
         </view>
       </view>
