@@ -12,7 +12,9 @@ Page({
   data: {
     // 倒计时
     countdown:'',    
-    endDate2: '2020-07-04 13:57:00',
+    // endDate2: '2020-07-04 13:57:00',
+    endDate2: '',
+
 
     indicatorDots: true, // 是否显示面板指示点
     autoplay: true, // 是否自动切换

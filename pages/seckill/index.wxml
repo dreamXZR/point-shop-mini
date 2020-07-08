@@ -36,7 +36,8 @@
                 <image class="goodsImg" mode="scaleToFill" src="{{item.image[0].file_path}}"></image>
                 
                 <text class="daojishi f-30" style="color: #ff495e !important; " wx:if="{{showView1}}">
-                  <text style="color: #fff;">距开始：</text>{{countdown}}
+                  <text style="color: #fff;" wx:if="{{dataType=='on-going'}}">距结束：</text>
+                  <text style="color: #fff;" wx:if="{{dataType=='not-started'}}">距开始：</text>{{countdown}}
                 </text>
               
                 <text class="daojishi f-26" style="color: #ff495e !important; "  wx:if="{{!showView1}}">
@@ -64,7 +65,8 @@
   </view>
 
   <!-- 无数据 -->
-  <view wx:if="{{ !isLoading && !list.data.length }}" class="yoshop-notcont" style="margin-top:130px;">
+  <!-- <view wx:if="{{ !isLoading && !list.data.length }}" class="yoshop-notcont" style="margin-top:130px;"> -->
+  <view wx:if="{{  list.data.length == 0 }}" class="yoshop-notcont" style="margin-top:130px;">
     <view class="img">
       <image mode="aspectFit" src="../../images/no_content.png"></image>
     </view>

@@ -73,7 +73,7 @@ Page({
    */
   goSearch: function(e) {
     wx.navigateTo({
-      url: '../miaosha/miaosha?search=' + e.target.dataset.text,
+      url: '../../seckill/index?search=' + e.target.dataset.text,
     })
   },
 

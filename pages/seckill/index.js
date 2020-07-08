@@ -11,7 +11,10 @@ Page({
 
     // 倒计时
     countdown:'',    
-    endDate2: '2020-07-06 22:53:00',
+    // endDate2: '2020-07-06 22:53:00',
+    startData2: [],
+    endDate2: [],
+
 
     dataType: 'on-going', // 列表类型
 
@@ -51,7 +54,6 @@ Page({
       _this.getGoodsList();
     });
 
-    _this.countTime();
 
   },
   methods: {
@@ -91,10 +93,30 @@ Page({
       } else {
         _this.setData({
           list: resList,
+          // endDate2: resList.data[0].end_at,
           isLoading: false,
         });
+
       }
+      // if(_this.data.dataType == "on-going"){
+      //   console.log(1)
+      // }else{
+      //   console.log(2)
+      // }
+
+      for( var i = 0 ; i<_this.data.list.data.length; i++){
+        _this.setData({
+          endDate2: _this.data.list.data[i].end_at,
+          startData2: _this.data.list.data[i].start_at,
+        });
+        // console.log(_this.data.list.data[1].end_at)
+        _this.countTime();
+
+      }
+
+
     });
+
   },
 
   /**
@@ -125,6 +147,7 @@ Page({
     });
     // 获取列表
     // this.getOrderList(e.currentTarget.dataset.type);
+
     _this.getGoodsList();
   },
 
@@ -208,22 +231,33 @@ Page({
     var that = this;
     var date = new Date();
     var now = date.getTime();
-    var endDate = new Date(that.data.endDate2);//设置截止时间
-    var end = endDate.getTime();
-    var leftTime = end - now; //时间差         
+    var start1= Math.floor(now / 1000)
+    // var endDate = new Date(that.data.endDate2);//设置截止时间
+    // var end = endDate.getTime();
+    // var end = that.data.endDate2;
+    // console.log(start1)
+    var leftTime = that.data.endDate2 - start1; //时间差       
     var d, h, m, s, ms;
+    // console.log(that.data.list)
       
     if (leftTime >= 0) {
       // d = Math.floor(leftTime / 1000 / 60 / 60 / 24);
       // h = Math.floor(leftTime / 1000 / 60 / 60 % 24);
-      h = Math.floor(leftTime / 1000 / 60 / 60 );
-      m = Math.floor(leftTime / 1000 / 60 % 60);
-      s = Math.floor(leftTime / 1000 % 60);
-      ms = Math.floor(leftTime % 1000);
-      ms = ms < 100 ? "0" + ms : ms
-      s = s < 10 ? "0" + s : s
-      m = m < 10 ? "0" + m : m
-      h = h < 10 ? "0" + h : h
+      h = Math.floor(leftTime / 60 / 60 );
+      m = Math.floor(leftTime / 60 % 60);
+      s = Math.floor(leftTime  % 60);
+      // ms = Math.floor(leftTime % 1000);
+      // ms = ms < 100 ? "0" + ms : ms
+      s = s < 10 ? "0" + s : s;
+      m = m < 10 ? "0" + m : m;
+      h = h < 10 ? "0" + h : h;
+      // for( var i = 0 ; i<that.data.list.data.length; i++){
+      //   that.setData({
+      //     // countdown: d + "：" + h + "：" + m + "：" + s + ":" + ms,
+      //     countdown:  h + ":" + m  + ":" + s,
+  
+      //   })
+      // }
       that.setData({
         // countdown: d + "：" + h + "：" + m + "：" + s + ":" + ms,
         countdown:  h + ":" + m  + ":" + s,
@@ -231,7 +265,7 @@ Page({
       })
       
      //递归每秒调用countTime方法，显示动态时间效果
-    setTimeout(that.countTime, 100);
+    setTimeout(that.countTime, 1000);
     } else {
       console.log('已截止')
       that.setData({
