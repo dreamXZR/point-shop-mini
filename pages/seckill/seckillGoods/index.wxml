@@ -42,6 +42,8 @@
       </view>
       <view class="goods-sales-box f-28 dis-flex col-8">
         <text class="flex-box num">销量：{{detail.goods_sales}}</text>
+        <text style="color: red;">距开始：{{countdown}}</text>
+        <!-- <text style="color: red;">距结束：{{countdown}}</text> -->
 
       </view>
     </view>
@@ -113,8 +115,8 @@
         <!-- 底部操作栏 -->
         <view class="footer-fixed f-30">
           <block wx:if="{{stock_num > 0}}">
-            <view class="order-number" bindtap="submit" data-type="addCart">加入购物车</view>
-            <view class="all-order-bt" bindtap="submit" data-type="buyNow"> 立即购买</view>
+            <!-- <view class="order-number" bindtap="submit" data-type="addCart">加入购物车</view> -->
+            <view class="all-order-bt" bindtap="submit" data-type="buyNow"> 立即抢购</view>
           </block>
           <view class="default-btn" wx:else>暂无现货</view>
         </view>
@@ -186,14 +188,14 @@
         <text class="iconfont icon-kefu "></text>
       </view> -->
       <!-- 购物车按钮 -->
-      <view bindtap="flowCart" class="goods-fixed-icon">
+      <!-- <view bindtap="flowCart" class="goods-fixed-icon">
         <image class="flow-img" src="../../images/flow.png"></image>
         <view class="flow_num" wx:if="{{cart_total_num > 0}}">
           <text class="">{{cart_total_num}}</text>
         </view>
-      </view>
-      <view class="order-number" catchtap="onToggleTrade">加入购物车</view>
-      <view class="all-order-bt" catchtap="onToggleTrade">立即购买</view>
+      </view> -->
+      <!-- <view class="order-number" catchtap="onToggleTrade">加入购物车</view> -->
+      <view class="all-order-bt" catchtap="onToggleTrade">立即抢购</view>
     </view>
   </view>
 </scroll-view>

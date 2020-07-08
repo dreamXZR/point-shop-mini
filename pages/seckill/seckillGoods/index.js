@@ -1,8 +1,8 @@
 const App = getApp();
-const wxParse = require("../../wxParse/wxParse.js");
+const wxParse = require("../../../wxParse/wxParse.js");
 
 // 工具类
-const util = require('../../utils/util.js');
+const util = require('../../../utils/util.js');
 
 Page({
 
@@ -10,7 +10,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    // 倒计时
+    countdown:'',    
+    endDate2: '2020-07-04 13:57:00',
 
     indicatorDots: true, // 是否显示面板指示点
     autoplay: true, // 是否自动切换
@@ -244,7 +246,7 @@ Page({
       var shop_id = _this.data.detail.shop_id;
       // 立即购买
       wx.navigateTo({
-        url: '../flow/checkout?' + util.urlEncode({
+        url: '../../flow/checkout?' + util.urlEncode({
           order_type: 'buyNow',
           goods_id: _this.data.goods_id,
           goods_num: _this.data.goods_num,

@@ -1,0 +1,73 @@
+/* common.wxss */
+@import "/utils/common.wxss";
+
+/* 商品组 */
+
+.diy-goods .goods-list {
+  padding: 4rpx;
+  box-sizing: border-box;
+}
+
+.diy-goods .goods-list .goods-item {
+  box-sizing: border-box;
+  padding: 6rpx;
+}
+
+.diy-goods .goods-list.display__slide {
+  white-space: nowrap;
+  font-size: 0;
+}
+
+.diy-goods .goods-list.display__slide .goods-item {
+  display: inline-block;
+}
+
+.diy-goods .goods-list.display__list .goods-item {
+  float: left;
+}
+
+.diy-goods .goods-list.column__2 .goods-item {
+  width: 50%;
+}
+
+.diy-goods .goods-list.column__2 .goods-image image {
+  width: 359rpx;
+  height: 359rpx;
+}
+
+.diy-goods .goods-list.column__3 .goods-item {
+  width: 33.33333%;
+}
+
+.diy-goods .goods-list.column__3 .goods-image image {
+  width: 235.3rpx;
+  height: 235.3rpx;
+}
+
+.diy-goods .goods-list .goods-item .goods-image {
+  background: #fff;
+}
+
+.diy-goods .goods-list .goods-item .goods-image image {
+  display: block;
+  width: 100%;
+}
+
+.diy-goods .goods-list .goods-item .detail {
+  padding: 8rpx;
+  background: #fff;
+}
+
+.diy-goods .goods-list .goods-item .detail .goods-name {
+  height: 76rpx;
+  line-height: 1.3;
+  white-space: normal;
+}
+
+.detail-price .goods-price {
+  margin-right: 8rpx;
+}
+
+.detail-price .line-price {
+  text-decoration: line-through;
+}

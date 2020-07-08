@@ -51,7 +51,10 @@
     "pages/store/check/order",
     "pages/pointExchange/index",
     "pages/outlinePay/index",
-    "pages/user/pointDetail/index"
+    "pages/user/pointDetail/index",
+    "pages/seckill/index",
+    "pages/seckill/search/index",
+    "pages/seckill/seckillGoods/index"
 
   ],
   "window": {

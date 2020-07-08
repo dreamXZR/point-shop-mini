@@ -55,7 +55,7 @@ Page({
       wx.setStorageSync('recentSearch', recentSearch)
       // 跳转到商品列表页
       wx.navigateTo({
-        url: '../miaosha/miaosha?search=' + this.data.searchValue,
+        url: '../index?search=' + this.data.searchValue,
       })
     }
   },

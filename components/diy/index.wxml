@@ -69,6 +69,10 @@
   <block wx:if="{{item.type === 'goods'}}">
     <diy-goods itemIndex="{{ itemIndex }}" itemStyle="{{ item.style }}" dataList="{{ item.data }}"></diy-goods>
   </block>
+  <!-- 积分商品组 -->
+  <block wx:if="{{item.type === 'pointGoods'}}">
+    <diy-pointGoods itemIndex="{{ itemIndex }}" itemStyle="{{ item.style }}" dataList="{{ item.data }}"></diy-pointGoods>
+  </block>
 
   <!-- 优惠券组 -->
   <block wx:if="{{item.type === 'coupon'}}">
