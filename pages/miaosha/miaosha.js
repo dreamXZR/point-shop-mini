@@ -11,7 +11,7 @@ Page({
 
     // 倒计时
     countdown:'',    
-    endDate2: '2020-07-05 13:57:00',
+    endDate2: '2020-07-06 22:53:00',
 
     dataType: 'no-exchange', // 列表类型
 
@@ -212,8 +212,9 @@ Page({
     var now = date.getTime();
     var endDate = new Date(that.data.endDate2);//设置截止时间
     var end = endDate.getTime();
-    var leftTime = end - now; //时间差                              
+    var leftTime = end - now; //时间差         
     var d, h, m, s, ms;
+      
     if (leftTime >= 0) {
       // d = Math.floor(leftTime / 1000 / 60 / 60 / 24);
       // h = Math.floor(leftTime / 1000 / 60 / 60 % 24);
@@ -230,6 +231,7 @@ Page({
         countdown:  h + ":" + m  + ":" + s,
 
       })
+      
      //递归每秒调用countTime方法，显示动态时间效果
     setTimeout(that.countTime, 100);
     } else {
@@ -238,6 +240,7 @@ Page({
         countdown:'00:00:00'
       })
     }
+    
    
   },
 
