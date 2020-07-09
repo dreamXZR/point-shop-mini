@@ -13,7 +13,8 @@ Page({
     // 倒计时
     countdown:'',    
     // endDate2: '2020-07-04 13:57:00',
-    endDate2: '',
+    startData2: [],
+    endDate2: [],
 
 
     indicatorDots: true, // 是否显示面板指示点
@@ -58,13 +59,13 @@ Page({
    */
   onLoad: function(e) {
     let _this = this,
+    
       scene = App.getSceneData(e);
     // 商品id
     _this.data.goods_id = e.goods_id ? e.goods_id : scene.gid;
     // 获取商品信息
     _this.getGoodsDetail();
-    
-    _this.countTime();
+    console.log(e)
   },
 
   /**
@@ -78,6 +79,29 @@ Page({
       // 初始化商品详情数据
       let data = _this.initGoodsDetailData(result.data);
       _this.setData(data);
+      console.log(data)
+      _this.data.startData2 = _this.data.detail.start_at;
+
+      _this.data.endDate2 = _this.data.detail.end_at;
+
+      // console.log(_this.data.endDate2)
+      var startdata = _this.data.startData2;
+      var enddata= _this.data.endDate2;
+      var date = new Date();
+      var now = date.getTime();
+      var now1= Math.floor(now / 1000)
+      if(startdata > now1 ){
+        console.log("未开始")
+
+
+      }else{
+        console.log("已开始")
+
+
+      }
+        _this.countTime();
+
+
     });
   },
 
@@ -446,19 +470,27 @@ Page({
   // 倒计时时间
   countTime() {
     var that = this;
+    var startdata = that.data.startData2;
+    var enddata= that.data.endDate2;
     var date = new Date();
     var now = date.getTime();
-    var endDate = new Date(that.data.endDate2);//设置截止时间
-    var end = endDate.getTime();
-    var leftTime = end - now; //时间差                              
+    var now1= Math.floor(now / 1000)
+
+    // console.log(startdata)
+    // console.log(now1)
+    // console.log(enddata)
+    // var end = endDate.getTime();
+    var leftTime = enddata - now1; //时间差  
+    console.log(leftTime)                            
     var d, h, m, s, ms;
     if (leftTime >= 0) {
       // d = Math.floor(leftTime / 1000 / 60 / 60 / 24);
       // h = Math.floor(leftTime / 1000 / 60 / 60 % 24);
-      h = Math.floor(leftTime / 1000 / 60 / 60 );
-      m = Math.floor(leftTime / 1000 / 60 % 60);
-      s = Math.floor(leftTime / 1000 % 60);
-      ms = Math.floor(leftTime % 1000);
+      h = Math.floor(leftTime / 60 / 60 );
+      m = Math.floor(leftTime / 60 % 60);
+      s = Math.floor(leftTime  % 60);
+
+
       ms = ms < 100 ? "0" + ms : ms
       s = s < 10 ? "0" + s : s
       m = m < 10 ? "0" + m : m
@@ -469,7 +501,7 @@ Page({
 
       })
      //递归每秒调用countTime方法，显示动态时间效果
-    setTimeout(that.countTime, 100);
+    setTimeout(that.countTime, 1000);
     } else {
       console.log('已截止')
       that.setData({

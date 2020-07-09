@@ -256,6 +256,7 @@ Page({
           _this.onToggleTrade();
         }
       });
+      
     } else if (submitType === 'addCart') {
       // 加入购物车
       App._post_form('cart/add', {
