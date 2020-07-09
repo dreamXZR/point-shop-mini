@@ -10,6 +10,15 @@
       <text>门店简介：{{ detail.summary }}</text>
     </view>
   </view>
+  <!-- 顶部选项卡 -->
+    <view class="header-1 f-28 col-3">
+      <view catchtap="bindHeaderTap" class="{{dataType==='on-going'?'active':''}}" data-type="on-going">
+        <text>热门商品</text>
+      </view>
+      <view bindtap="bindHeaderTap" class="{{dataType==='not-started'?'active':''}}" data-type="not-started">
+        <text>优惠商品</text>
+      </view>
+    </view>
   <!-- <view class="content">
     <view class="content-item dis-flex flex-y-center">
       <view class="content-item__icon dis-flex">
@@ -49,14 +58,19 @@
       <view class="category-list {{ arrange }}">
         <navigator class="list b-f" hover-class="none" url="../../goods/index?goods_id={{item.goods_id}}" wx:for="{{list.data}}" wx:key="list">
           <view class="left">
-            <view class="img">
+            <view class="img" >
               <image class="goodsImg" mode="scaleToFill" src="{{item.image[0].file_path}}"></image>
+              
             </view>
           </view>
           <view class="right">
             <view class="cont">
               <text class="f-30 title twolist-hidden m-top20">{{item.goods_name}}
                 
+              </text>
+              <text class="daojishi f-26" style="color: #ff495e !important; " wx:if="{{dataType=='not-started'}}">
+                  <text style="color: #000;" >活动时间：</text>{{countdown}}
+                  <text style="color: #000;">~</text>{{countdown}}
               </text>
               <view class="price f-26 col-m m-top10">
                 价格：￥{{item.sku[0].goods_price}}

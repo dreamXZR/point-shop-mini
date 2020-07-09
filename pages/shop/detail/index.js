@@ -7,10 +7,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    // 优惠时间
+    countdown:'2020-07-06 22:53:00',
     // 门店详情
     detail: {},
-
+    dataType: 'on-going', // 列表类型
     list: {}, // 商品列表数据
     showView: true, // 列表显示方式
     arrange: "arrange", // 列表显示方式class
@@ -54,6 +55,24 @@ Page({
       _this.setData(result.data);
 
     });
+  },
+
+  /**
+   * 切换标签
+   */
+  bindHeaderTap: function(e) {
+    let _this = this;
+    _this.setData({
+      dataType: e.currentTarget.dataset.type,
+      list: {},
+      isLoading: true,
+      page: 1,
+      no_more: false,
+    });
+    // 获取列表
+    // this.getOrderList(e.currentTarget.dataset.type);
+
+    _this.getGoodsList();
   },
 
   /**
@@ -106,6 +125,7 @@ Page({
 
     App._get('goods/lists', {
       page: page || 1,
+      status: this.data.dataType,
       sortType: this.data.sortType,
       sortPrice: this.data.sortPrice ? 1 : 0,
       category_id: this.data.option.category_id || 0,
