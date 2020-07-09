@@ -42,7 +42,11 @@
       </view>
       <view class="goods-sales-box f-28 dis-flex col-8">
         <text class="flex-box num">销量：{{detail.goods_sales}}</text>
-        <text style="color: red;">距开始：{{countdown}}</text>
+        <text style="color: red;" wx:if="{{seckill == 1}}">距离开始：{{countdown}}</text>
+        <text style="color: red;" wx:if="{{seckill == 2}}">距离结束：{{countdown}}</text>
+
+        <text style="color: red;" wx:if="{{seckill == 3}}">已截止</text>
+
         <!-- <text style="color: red;">距结束：{{countdown}}</text> -->
 
       </view>
@@ -117,6 +121,7 @@
           <block wx:if="{{stock_num > 0}}">
             <!-- <view class="order-number" bindtap="submit" data-type="addCart">加入购物车</view> -->
             <view class="all-order-bt" bindtap="submit" data-type="buyNow"> 立即抢购</view>
+            
           </block>
           <view class="default-btn" wx:else>暂无现货</view>
         </view>
@@ -195,7 +200,11 @@
         </view>
       </view> -->
       <!-- <view class="order-number" catchtap="onToggleTrade">加入购物车</view> -->
-      <view class="all-order-bt" catchtap="onToggleTrade">立即抢购</view>
+      <view class="" style="background-color: #c1c1c1; width: 100%; color: #fff; text-align: center; line-height: 92rpx;" catchtap="" wx:if="{{seckill == 1}}">未开始</view>
+      <view class="all-order-bt"  catchtap="onToggleTrade" wx:if="{{seckill == 2}}">立即抢购</view>
+      <view class="" style="background-color: #c1c1c1; width: 100%; color: #fff; text-align: center; line-height: 92rpx;" catchtap="" wx:if="{{seckill == 3}}">已截止</view>
+
+
     </view>
   </view>
 </scroll-view>

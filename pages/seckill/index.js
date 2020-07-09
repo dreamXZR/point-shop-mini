@@ -1,5 +1,7 @@
 const App = getApp();
 
+var time= require("../../utils/util.js");
+
 Page({
   properties: {
     itemIndex: String,
@@ -93,11 +95,12 @@ Page({
       } else {
         _this.setData({
           list: resList,
-          // endDate2: resList.data[0].end_at,
+          // endDate2: time.formatTimeTwo(_this.data.list.data.end_at,'M-D h:m:s'),
           isLoading: false,
         });
 
       }
+      // console.log(_this.data.list.data[0].end_at)
       // if(_this.data.dataType == "on-going"){
       //   console.log(1)
       // }else{
@@ -106,8 +109,10 @@ Page({
 
       for( var i = 0 ; i<_this.data.list.data.length; i++){
         _this.setData({
-          endDate2: _this.data.list.data[i].end_at,
-          startData2: _this.data.list.data[i].start_at,
+          endDate2:  time.formatTimeTwo(_this.data.list.data[i].end_at,'M-D h:m:s'),
+         
+          startData2: time.formatTimeTwo(_this.data.list.data[i].start_at,'M-D h:m:s'),
+          
         });
         // console.log(_this.data.list.data[1].end_at)
         _this.countTime();
@@ -229,16 +234,29 @@ Page({
   },
   countTime() {
     var that = this;
+    
+    var date = new Date();
+    // console.log(time.formatTime(date));
+    // 当前时间的日期格式： 2019/02/22 15:24:23
+    
+    // var sjc = 1550714678;
+    var sjc = that.data.endDate2;
+    
+
+    // console.log(time.formatTimeTwo(sjc,'M-D h:m:s'));
+    // console.log(time.formatTimeTwo(sjc,'h:m')); // 03:03
+    
     var date = new Date();
     var now = date.getTime();
-    var start1= Math.floor(now / 1000)
+    var start1= Math.floor(now / 1000);
     // var endDate = new Date(that.data.endDate2);//设置截止时间
-    // var end = endDate.getTime();
-    // var end = that.data.endDate2;
-    // console.log(start1)
+    // var end = that.data.endDate2.getTime();
+    // var end = new Date(that.data.endDate2);
+    // var dd= 
+    // console.log(end)
+    
     var leftTime = that.data.endDate2 - start1; //时间差       
     var d, h, m, s, ms;
-    // console.log(that.data.list)
       
     if (leftTime >= 0) {
       // d = Math.floor(leftTime / 1000 / 60 / 60 / 24);
@@ -246,6 +264,7 @@ Page({
       h = Math.floor(leftTime / 60 / 60 );
       m = Math.floor(leftTime / 60 % 60);
       s = Math.floor(leftTime  % 60);
+
       // ms = Math.floor(leftTime % 1000);
       // ms = ms < 100 ? "0" + ms : ms
       s = s < 10 ? "0" + s : s;
@@ -260,7 +279,9 @@ Page({
       // }
       that.setData({
         // countdown: d + "：" + h + "：" + m + "：" + s + ":" + ms,
-        countdown:  h + ":" + m  + ":" + s,
+        // countdown:  h + ":" + m  + ":" + s,
+        countdown : time.formatTimeTwo(sjc,'M-D h:m:s'),
+
 
       })
       

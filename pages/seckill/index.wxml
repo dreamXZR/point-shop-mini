@@ -37,11 +37,11 @@
                 
                 <text class="daojishi f-30" style="color: #ff495e !important; " wx:if="{{showView1}}">
                   <text style="color: #fff;" wx:if="{{dataType=='on-going'}}">距结束：</text>
-                  <text style="color: #fff;" wx:if="{{dataType=='not-started'}}">距开始：</text>{{countdown}}
+                  <text style="color: #fff;" wx:if="{{dataType=='not-started'}}">活动时间：</text>{{endDate2}}
                 </text>
               
                 <text class="daojishi f-26" style="color: #ff495e !important; "  wx:if="{{!showView1}}">
-                  <text style="color: #fff;">距结束：</text>{{countdown}}
+                  <text style="color: #fff;">距结束：</text>{{endDate2}}
                 </text>
                 <!-- <text class="daojishi f-30" style="color: #ff495e !important; ">
                 <text style="color: #fff;">距结束：</text>{{countdown}}
