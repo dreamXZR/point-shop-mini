@@ -18,6 +18,7 @@
     "diy-service": "./service/service",
     "diy-richText": "./richText/richText",
     "diy-sharingGoods": "./sharingGoods/sharingGoods",
-    "diy-shop": "./shop/index"
+    "diy-shop": "./shop/index",
+    "diy-seckillGoods": "./seckillGoods/seckillGoods"
   }
 }
