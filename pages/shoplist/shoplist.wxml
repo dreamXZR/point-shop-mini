@@ -1,14 +1,3 @@
-<!-- 搜索框 -->
-  <view class="index-search-box dis-flex">
-    <view class="index-search flex-box" catchtap="triggerSearch">
-      <view class="index-cont-search">
-        <icon class="text-center" size="15" type="search"></icon>
-        <text>{{ option.search ? option.search  : '搜索商品' }}</text>
-      </view>
-    </view>
-  </view>
-
-
 <!-- 轮播图 -->
 <view class="diy-banner">
   <swiper class="banner-box swiper-box dot-{{ itemStyle.btnShape }}" autoplay="{{ autoplay }}" circular="{{ true }}" duration="{{ duration }}"style="height: {{ imgHeights[imgCurrent] }}rpx" indicator-color="#fff" indicator-active-color="#000" indicator-dots="ture">

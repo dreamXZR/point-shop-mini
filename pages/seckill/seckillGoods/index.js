@@ -67,7 +67,6 @@ Page({
     _this.data.goods_id = e.goods_id ? e.goods_id : scene.gid;
     // 获取商品信息
     _this.getGoodsDetail();
-    console.log(e)
   },
 
   /**
@@ -81,25 +80,17 @@ Page({
       // 初始化商品详情数据
       let data = _this.initGoodsDetailData(result.data);
       _this.setData(data);
-      console.log(data)
       _this.data.startData2 = _this.data.detail.start_at;
 
       _this.data.endDate2 = _this.data.detail.end_at;
-
-      // console.log(_this.data.endDate2)
-      var startdata = _this.data.startData2;
+     var startdata = _this.data.startData2;
       var enddata= _this.data.endDate2;
       var date = new Date();
       var now = date.getTime();
       var now1= Math.floor(now / 1000)
       if(startdata > now1 ){
-       
-        console.log("未开始")
-
-        _this.countTime();
-        
+          _this.countTime();
       }else{
-        console.log("已开始")
         _this.countTime1()
       }
 

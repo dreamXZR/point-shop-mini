@@ -236,7 +236,7 @@
 }
 
 .category-list .right .cont .title {
-  height: 76rpx;
+  height: 50rpx;
   line-height: 1.3;
 }
 

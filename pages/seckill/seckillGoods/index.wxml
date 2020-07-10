@@ -1,4 +1,4 @@
-<import src="../../wxParse/wxParse.wxml"></import>
+<import src="../../../wxParse/wxParse.wxml"></import>
 <scroll-view bindscroll="scroll" scroll-top="{{scrollTop}}" scroll-y="true" style="position:absolute; top:0; left:0; right:0; bottom:0;">
   <view class="container" wx:if="{{detail.goods_id}}">
     <view class="swiper">

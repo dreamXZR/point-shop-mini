@@ -95,28 +95,8 @@ Page({
       } else {
         _this.setData({
           list: resList,
-          // endDate2: time.formatTimeTwo(_this.data.list.data.end_at,'M-D h:m:s'),
           isLoading: false,
         });
-
-      }
-      // console.log(_this.data.list.data[0].end_at)
-      // if(_this.data.dataType == "on-going"){
-      //   console.log(1)
-      // }else{
-      //   console.log(2)
-      // }
-
-      for( var i = 0 ; i<_this.data.list.data.length; i++){
-        _this.setData({
-          endDate2:  time.formatTimeTwo(_this.data.list.data[i].end_at,'M-D h:m:s'),
-         
-          startData2: time.formatTimeTwo(_this.data.list.data[i].start_at,'M-D h:m:s'),
-          
-        });
-        // console.log(_this.data.list.data[1].end_at)
-        _this.countTime();
-
       }
 
 

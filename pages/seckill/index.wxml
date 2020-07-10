@@ -34,25 +34,15 @@
             <view class="left">
               <view class="img">
                 <image class="goodsImg" mode="scaleToFill" src="{{item.image[0].file_path}}"></image>
-                
-                <text class="daojishi f-30" style="color: #ff495e !important; " wx:if="{{showView1}}">
-                  <text style="color: #fff;" wx:if="{{dataType=='on-going'}}">距结束：</text>
-                  <text style="color: #fff;" wx:if="{{dataType=='not-started'}}">活动时间：</text>{{endDate2}}
-                </text>
-              
-                <text class="daojishi f-26" style="color: #ff495e !important; "  wx:if="{{!showView1}}">
-                  <text style="color: #fff;">距结束：</text>{{endDate2}}
-                </text>
-                <!-- <text class="daojishi f-30" style="color: #ff495e !important; ">
-                <text style="color: #fff;">距结束：</text>{{countdown}}
-                </text> -->
               </view>
             </view>
             <view class="right">
               <view class="cont">
                 <text class="f-30 title twolist-hidden m-top10">{{item.goods_name}}</text>
+                <text class="f-30 title twolist-hidden m-top10" wx:if="{{dataType=='not-started'}}" style="font-size: 23rpx;color: gray;">活动时间：{{item.time}}</text>
+                <text class="f-30 title twolist-hidden m-top10" wx:if="{{dataType=='on-going'}}" style="font-size: 23rpx;color: gray;">距结束：{{item.time}}</text>
                 <view class="price f-32 col-m m-top10">
-                  特惠价格：￥{{item.sku[0].seckill_price}}
+                  特惠价格：￥{{item.sku[0].goods_price}}
                   <text class="del f-22" wx:if="{{item.sku[0].line_price>0}}">{{item.sku[0].line_price}}</text>
                 </view>
               </view>

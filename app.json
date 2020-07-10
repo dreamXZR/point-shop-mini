@@ -54,7 +54,8 @@
     "pages/user/pointDetail/index",
     "pages/seckill/index",
     "pages/seckill/search/index",
-    "pages/seckill/seckillGoods/index"
+    "pages/seckill/seckillGoods/index",
+    "pages/shoplist/shoplist"
 
   ],
   "window": {
