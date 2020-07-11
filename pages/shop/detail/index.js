@@ -12,6 +12,7 @@ Page({
     // 门店详情
     detail: {},
     dataType: 'on-going', // 列表类型
+    // dataType:"not-started"
     list: {}, // 商品列表数据
     showView: true, // 列表显示方式
     arrange: "arrange", // 列表显示方式class
@@ -69,6 +70,7 @@ Page({
       page: 1,
       no_more: false,
     });
+    // console.log(_this.data.dataType)
     // 获取列表
     // this.getOrderList(e.currentTarget.dataset.type);
 
@@ -122,32 +124,63 @@ Page({
    */
   getGoodsList: function(isPage, page) {
     let _this = this;
+    if(_this.data.dataType == "not-started"){
+      App._get('seckill.goods/lists', {
+        page: page || 1,
+        status: "on-going",
+        search: this.data.option.search || '',
+        sortType: this.data.sortType,
+        sortPrice: this.data.sortPrice ? 1 : 0,
+        category_id: this.data.option.category_id || 0,
+        shop_id:_this.data.option.shop_id
+      }, function(result) {
+        let resList = result.data.list,
+          dataList = _this.data.list;
+        if (isPage == true) {
+          _this.setData({
+            'list.data': dataList.data.concat(resList.data),
+            isLoading: false,
+          });
+        } else {
+          _this.setData({
+            list: resList,
+            isLoading: false,
+          });
+        }
+        // console.log(_this.data.dataType)
+  
+  
+      });
+    }else{
+      App._get('goods/lists', {
+        page: page || 1,
+        // status: this.data.dataType,
+        sortType: this.data.sortType,
+        sortPrice: this.data.sortPrice ? 1 : 0,
+        category_id: this.data.option.category_id || 0,
+        search: this.data.option.search || '',
+        shop_id:_this.data.option.shop_id
+      }, function(result) {
+        let resList = result.data.list,
+          dataList = _this.data.list;
+          // console.log(result)
+        if (isPage == true) {
+          _this.setData({
+            'list.data': dataList.data.concat(resList.data),
+            isLoading: false,
+          });
+          
+        } else {
+          _this.setData({
+            list: resList,
+            isLoading: false,
+          });
+        // console.log(_this.data.dataType)
 
-    App._get('goods/lists', {
-      page: page || 1,
-      status: this.data.dataType,
-      sortType: this.data.sortType,
-      sortPrice: this.data.sortPrice ? 1 : 0,
-      category_id: this.data.option.category_id || 0,
-      search: this.data.option.search || '',
-      shop_id:_this.data.option.shop_id
-    }, function(result) {
-      let resList = result.data.list,
-        dataList = _this.data.list;
-        console.log(result)
-      if (isPage == true) {
-        _this.setData({
-          'list.data': dataList.data.concat(resList.data),
-          isLoading: false,
-        });
-        
-      } else {
-        _this.setData({
-          list: resList,
-          isLoading: false,
-        });
-      }
-    });
+        }
+      });
+    }
+    
   },
 
 })
