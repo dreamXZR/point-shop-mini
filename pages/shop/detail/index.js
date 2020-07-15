@@ -69,6 +69,7 @@ Page({
       page: 1,
       no_more: false,
     });
+    // console.log(_this.data.dataType)
     // 获取列表
     if(e.currentTarget.dataset.type == 'goods'){
       _this.getGoodsList();

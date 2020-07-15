@@ -124,7 +124,7 @@ Page({
       _this.setData({
         categoryList: result.data.list
       });
-      console.log(categoryList)
+      // console.log(categoryList)
     });
   },
   /**

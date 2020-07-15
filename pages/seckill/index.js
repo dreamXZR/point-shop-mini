@@ -98,6 +98,7 @@ Page({
           isLoading: false,
         });
       }
+      console.log(_this.data.list)
 
 
     });
