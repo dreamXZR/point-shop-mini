@@ -41,7 +41,6 @@ App({
    * 小程序启动场景
    */
   onStartupScene: function(query) {
-
     // 获取场景值
     let scene = this.getSceneData(query);
     // 记录推荐人id
@@ -334,8 +333,8 @@ App({
    * 记录formId
    */
   saveFormId: function(formId) {
-    let App = this;
-    //console.log('saveFormId');
+    // let App = this;
+    // console.log(formId);
     // if (formId === 'the formId is a mock one') {
     //   return false;
     // }
@@ -343,6 +342,7 @@ App({
     //   formId: formId
     // }, null, null, null, false);
   },
+
 
   /**
    * 生成转发的url参数

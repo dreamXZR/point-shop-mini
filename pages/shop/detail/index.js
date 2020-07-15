@@ -11,7 +11,7 @@ Page({
     countdown:'2020-07-06 22:53:00',
     // 门店详情
     detail: {},
-    dataType: 'on-going', // 列表类型
+    dataType: 'goods', // 列表类型
     list: {}, // 商品列表数据
     showView: true, // 列表显示方式
     arrange: "arrange", // 列表显示方式class
@@ -70,9 +70,12 @@ Page({
       no_more: false,
     });
     // 获取列表
-    // this.getOrderList(e.currentTarget.dataset.type);
-
-    _this.getGoodsList();
+    if(e.currentTarget.dataset.type == 'goods'){
+      _this.getGoodsList();
+    }else{
+      _this.getSeckillGoodsList();
+    }
+   
   },
 
   /**
@@ -134,7 +137,37 @@ Page({
     }, function(result) {
       let resList = result.data.list,
         dataList = _this.data.list;
-        console.log(result)
+      if (isPage == true) {
+        _this.setData({
+          'list.data': dataList.data.concat(resList.data),
+          isLoading: false,
+        });
+        
+      } else {
+        _this.setData({
+          list: resList,
+          isLoading: false,
+        });
+      }
+    });
+  },
+
+   /**
+   * 获取优惠商品列表
+   * @param {bool} isPage 是否分页
+   * @param {number} page 指定的页码
+   */
+  getSeckillGoodsList: function(isPage, page) {
+    let _this = this;
+
+    App._get('seckill.goods/lists', {
+      page: page || 1,
+      status: this.data.dataType,
+      search: this.data.option.search || '',
+      shop_id:_this.data.option.shop_id
+    }, function(result) {
+      let resList = result.data.list,
+        dataList = _this.data.list;
       if (isPage == true) {
         _this.setData({
           'list.data': dataList.data.concat(resList.data),

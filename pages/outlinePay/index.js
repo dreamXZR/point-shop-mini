@@ -1,5 +1,6 @@
 const App = getApp();
 const Toptips = require('../../components/toptips/toptips');
+const util = require('../../utils/util.js');
 
 Page({
 
@@ -16,11 +17,9 @@ Page({
    */
   onLoad(options) {
     let _this = this;
-    _this.setData({
-      options : options
-    })
+   let scene_data = util.outline_scene_decode(options.scene)
     //获取店铺信息
-    _this.getShopDetail(options.shop_id);
+    _this.getShopDetail(scene_data.shop_id);
   },
   onShow: function() {
     // 获取当前用户信息

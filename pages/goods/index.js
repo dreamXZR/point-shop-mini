@@ -54,7 +54,7 @@ Page({
    */
   onLoad: function(e) {
     let _this = this,
-      scene = App.getSceneData(e);
+    scene = App.getSceneData(e);
     // 商品id
     _this.data.goods_id = e.goods_id ? e.goods_id : scene.gid;
     // 获取商品信息
@@ -311,12 +311,11 @@ Page({
   onShareAppMessage: function() {
     let _this = this;
     // 构建页面参数
-    let params = App.getShareUrlParams({
-      'goods_id': _this.data.goods_id
-    });
     return {
       title: _this.data.detail.goods_name,
-      path: "/pages/goods/index?" + params
+      path: "/pages/goods/index?" + App.getShareUrlParams({
+        'goods_id': _this.data.goods_id,
+      })
     };
   },
 
@@ -325,7 +324,7 @@ Page({
    */
   openActionsheet(e) {
     // 记录formId
-    App.saveFormId(e.detail.formId);
+    //App.saveFormId(e.detail.formId);
     this.setData({
       'share.show': true
     });
@@ -344,10 +343,10 @@ Page({
    * 点击分享选项
    */
   clickAction(e) {
-    if (e.detail.index === 0) {
-      // 显示商品海报
-      this.showPoster();
-    }
+    // if (e.detail.index === 0) {
+    //   // 显示商品海报
+    //   this.showPoster();
+    // }
     this.closeActionSheet();
   },
 

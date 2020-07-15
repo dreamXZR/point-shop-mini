@@ -132,13 +132,13 @@ Page({
   /**
    * 设置分享内容
    */
-  onShareAppMessage: function() {
-    // 构建分享参数
-    return {
-      title: "全部分类",
-      path: "/pages/category/index?" + App.getShareUrlParams()
-    };
-  },
+  // onShareAppMessage: function() {
+  //   // 构建分享参数
+  //   return {
+  //     title: "全部分类",
+  //     path: "/pages/category/index?" + App.getShareUrlParams()
+  //   };
+  // },
 
   /**
    * 商品搜索

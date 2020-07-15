@@ -75,12 +75,12 @@ Page({
   /**
    * 设置分享内容
    */
-  onShareAppMessage: function() {
-    let _this = this;
-    return {
-      title: _this.data.templet.share_title,
-      path: "/pages/category/index?" + App.getShareUrlParams()
-    };
-  }
+  // onShareAppMessage: function() {
+  //   let _this = this;
+  //   return {
+  //     title: _this.data.templet.share_title,
+  //     path: "/pages/category/index?" + App.getShareUrlParams()
+  //   };
+  // }
 
 });

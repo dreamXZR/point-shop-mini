@@ -317,12 +317,14 @@ Page({
   onShareAppMessage: function() {
     let _this = this;
     // 构建页面参数
-    let params = App.getShareUrlParams({
-      'goods_id': _this.data.goods_id
-    });
+    // let params = App.getShareUrlParams({
+    //   'goods_id': _this.data.goods_id
+    // });
     return {
       title: _this.data.detail.goods_name,
-      path: "/pages/goods/index?" + params
+      path: "/pages/goods/index?" + App.getShareUrlParams({
+        'goods_id': _this.data.goods_id,
+      })
     };
   },
 

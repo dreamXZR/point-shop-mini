@@ -14,7 +14,7 @@
     <view class="pay-money">
 
       金额
-      <input class="pay-input" adjust-position="{{false}}" auto-focus="true" type="number" placeholder="￥" placeholder-style="font-size: 12px; padding-top: 3px;" bindfocus="inputFocus" bindblur="inputBlur"
+      <input class="pay-input" adjust-position="{{false}}" auto-focus="true" type="digit" placeholder="￥" placeholder-style="font-size: 12px; padding-top: 3px;" bindfocus="inputFocus" bindblur="inputBlur"
       bindinput="inputVal"/>
     </view>
   </view>

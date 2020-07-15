@@ -230,9 +230,18 @@ Page({
    * 增加商品数量
    */
   up: function() {
-    this.setData({
-      goods_num: ++this.data.goods_num
-    })
+    let value = ++this.data.goods_num;
+    if(value > this.data.detail.buy_num_limit){
+      wx.showModal({
+        title: '友情提示',
+        content:'本商品限购数量为'+this.data.detail.buy_num_limit
+      })
+    }else{
+      this.setData({
+        goods_num: value
+      })
+    }
+    
   },
 
   /**
@@ -331,12 +340,14 @@ Page({
   onShareAppMessage: function() {
     let _this = this;
     // 构建页面参数
-    let params = App.getShareUrlParams({
-      'goods_id': _this.data.goods_id
-    });
+    // let params = App.getShareUrlParams({
+    //   'goods_id': _this.data.goods_id
+    // });
     return {
       title: _this.data.detail.goods_name,
-      path: "/pages/goods/index?" + params
+      path: "/pages/goods/index?" + App.getShareUrlParams({
+        'goods_id': _this.data.goods_id,
+      })
     };
   },
 
