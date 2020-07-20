@@ -41,6 +41,10 @@ Page({
           url: '../index/index'
         });
       }
+      // 设置当前页面标题
+      wx.setNavigationBarTitle({
+        title: data.words.apply.title.value
+      });
       data.isData = true;
       _this.setData(data);
     });

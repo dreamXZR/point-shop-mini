@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "申请成为店家",
+  "navigationBarTitleText": "",
   "usingComponents": {
     "zan-dialog": "/components/dialog/index"
   }

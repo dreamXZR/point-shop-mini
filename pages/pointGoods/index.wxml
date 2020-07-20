@@ -17,7 +17,7 @@
         <view class="left flex-box dis-flex flex-dir-column">
           <!-- 商品名称 -->
           <view class="goods-title ">
-            <text class="title f-30 twolist-hidden">{{detail.goods_name}}</text>
+            <text class="title f-30 twolist-hidden">{{detail.goods_name}}<text style="color:gray;padding-left:10rpx;">(兑换积分:{{detail.exchange_points}})</text></text>
           </view>
           <!-- 商品卖点 -->
           <view class="goods-selling-point">
@@ -30,18 +30,14 @@
           </view>
         </view>
         <view class="right goods__share">
-          <!-- <form bindsubmit="openActionsheet" report-submit="true">
+          <form bindsubmit="openActionsheet" report-submit="true">
             <button formType="submit" class="share-btn dis-flex flex-dir-column">
               <text class="share__icon iconfont icon-fenxiang"></text>
               <text class="f-24">分享</text>
             </button>
-          </form> -->
-          <text class="price col-m" >兑换积分:{{detail.exchange_points}}</text>
+          </form>
         </view>
       </view>
-      <!-- <view class="goods-sales-box f-28 dis-flex col-8">
-        <text class="flex-box num">销量：{{detail.goods_sales}}</text>
-      </view> -->
     </view>
     <!-- 选择商品规格 -->
     <form wx:if="{{ specData }}" bindsubmit="onToggleTrade" report-submit>

@@ -5,7 +5,7 @@ Page({
     // 搜索框样式
     searchColor: "rgba(0,0,0,0.4)",
     searchSize: "15",
-    searchName: "搜索积分商品",
+    searchName: "积分商品",
 
     // 列表高度
     scrollHeight: 0,

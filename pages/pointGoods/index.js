@@ -36,10 +36,6 @@ Page({
       cancelWithMask: true,
       cancelText: '关闭',
       actions: [{
-        name: '生成商品海报',
-        className: 'action-class',
-        loading: false
-      }, {
         name: '发送给朋友',
         openType: 'share'
       }],
@@ -372,19 +368,19 @@ Page({
    * 显示商品海报图
    */
   showPoster: function() {
-    let _this = this;
-    wx.showLoading({
-      title: '加载中',
-    });
-    App._get('goods/poster', {
-      goods_id: _this.data.goods_id
-    }, function(result) {
-      _this.setData(result.data, function() {
-        _this.togglePopup();
-      });
-    }, null, function() {
-      wx.hideLoading();
-    });
+    // let _this = this;
+    // wx.showLoading({
+    //   title: '加载中',
+    // });
+    // App._get('goods/poster', {
+    //   goods_id: _this.data.goods_id
+    // }, function(result) {
+    //   _this.setData(result.data, function() {
+    //     _this.togglePopup();
+    //   });
+    // }, null, function() {
+    //   wx.hideLoading();
+    // });
   },
 
   /**

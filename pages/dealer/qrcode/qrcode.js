@@ -35,6 +35,9 @@ Page({
       let data = result.data;
       data.isData = true;
       // 设置当前页面标题
+      wx.setNavigationBarTitle({
+        title: result.data.words.qrcode.title.value
+      })
       _this.setData(data);
     });
   },

@@ -230,7 +230,7 @@ Page({
    * 增加商品数量
    */
   up: function() {
-    let value = ++this.data.goods_num;
+    let value = this.data.goods_num + 1;
     if(value > this.data.detail.buy_num_limit){
       wx.showModal({
         title: '友情提示',
@@ -375,7 +375,7 @@ Page({
    * 点击分享选项
    */
   clickAction(e) {
-    if (e.detail.index === 0) {
+    if (e.detail.index === 1) {
       // 显示商品海报
       this.showPoster();
     }

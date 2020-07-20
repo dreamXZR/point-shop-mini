@@ -163,7 +163,7 @@ Page({
 
     App._get('seckill.goods/lists', {
       page: page || 1,
-      status: this.data.dataType,
+      status: 'on-going',
       search: this.data.option.search || '',
       shop_id:_this.data.option.shop_id
     }, function(result) {

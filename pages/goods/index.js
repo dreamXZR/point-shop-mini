@@ -343,10 +343,10 @@ Page({
    * 点击分享选项
    */
   clickAction(e) {
-    // if (e.detail.index === 0) {
-    //   // 显示商品海报
-    //   this.showPoster();
-    // }
+    if (e.detail.index === 1) {
+      // 显示商品海报
+      this.showPoster();
+    }
     this.closeActionSheet();
   },
 

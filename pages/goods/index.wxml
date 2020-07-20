@@ -17,7 +17,7 @@
         <view class="left flex-box dis-flex flex-dir-column">
           <!-- 商品名称 -->
           <view class="goods-title ">
-            <text class="title f-30 twolist-hidden">{{detail.goods_name}}</text>
+            <text class="title f-30 twolist-hidden">{{detail.goods_name}}<text style="color:gray;padding-left:10rpx;">(积分:{{detail.exchange_points}})</text></text>
             
           </view>
           <!-- 商品卖点 -->
@@ -42,7 +42,6 @@
       </view>
       <view class="goods-sales-box f-28 dis-flex col-8">
         <text class="flex-box num">销量：{{detail.goods_sales}}</text>
-
       </view>
     </view>
     <!-- 选择商品规格 -->
