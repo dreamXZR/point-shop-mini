@@ -3,6 +3,7 @@ const wxParse = require("../../wxParse/wxParse.js");
 
 // 工具类
 const util = require('../../utils/util.js');
+const QQMapWX = require('../../utils/qqmap-wx-jssdk.js');
 
 Page({
 
