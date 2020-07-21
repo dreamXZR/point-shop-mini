@@ -78,7 +78,7 @@
       </view>
     </view>
     <view class="qianbao-right">
-      <navigator  url="./pointDetail/index" hover-class="none">
+      <navigator  url="./pointDetail/index" >
         <view>
             <image src="../../images/qianbao.png"></image>
         </view>

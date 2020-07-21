@@ -25,11 +25,13 @@
         <view class="left-name">
           <text class="f-30">所在地区</text>
         </view>
-        <view class="address-cont-box flex-box">
-          <picker mode="region" bindchange="bindRegionChange">
+        <view class="address-cont-box flex-box" bindtap="bindRegionChange">
+          <!-- <picker mode="region" bindchange="bindRegionChange"> -->
+          
+
             <text wx:if="{{region}}" class="f-30">{{region}}</text>
             <text wx:else class="f-30 col-7">选择省、市、区</text>
-          </picker>
+          <!-- </picker> -->
         </view>
       </view>
       <view class="dis-flex list address-box">

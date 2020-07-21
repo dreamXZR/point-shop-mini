@@ -120,6 +120,9 @@
   width: 100%;
   padding: 25rpx;
   color: #666;
+  display: flex;
+  justify-content: space-around;
+
 }
 .num{
   color: red;
@@ -138,6 +141,7 @@
 .qianbao-right {
   text-align: center;
   font-size: 12px;
+  /* float: right; */
 }
 .qianbao-right image{
   width: 20px;
