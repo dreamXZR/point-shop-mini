@@ -95,10 +95,9 @@ Page({
    * 修改地区
    */
   bindRegionChange: function(e) {
-    // this.setData({
-    //   region: e.detail.value
-    // })
-    console.log(1)
+    this.setData({
+      region: e.detail.value
+    })
   },
 
   /**
