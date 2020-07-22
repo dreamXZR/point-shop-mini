@@ -8,7 +8,7 @@
             <text>{{item.phone}}</text>
           </view>
           <view class="flow-checkout-address">
-            {{item.region.province}} {{item.region.city}} {{item.region.region}} {{item.detail}}
+            {{item.region}} {{item.detail}}
           </view>
         </view>
       </view>

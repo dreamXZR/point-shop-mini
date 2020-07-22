@@ -1,12 +1,12 @@
 <!-- 轮播图 -->
-<view class="diy-banner">
+<!-- <view class="diy-banner">
   <swiper class="banner-box swiper-box dot-{{ itemStyle.btnShape }}" autoplay="{{ autoplay }}" circular="{{ true }}" duration="{{ duration }}"style="height: {{ imgHeights[imgCurrent] }}rpx" indicator-color="#fff" indicator-active-color="#000" indicator-dots="ture">
   <swiper-item wx:for="{{imgList}}">
     <image catchtap="navigationTo" class="slide-image" src="{{item.file_path}}">
     </image>
   </swiper-item>
   </swiper>
-</view>
+</view> -->
 <!-- 分类tab -->
 <view class="header">
   <scroll-view scroll-x scroll-left style="height: 100%;">
@@ -20,7 +20,7 @@
   </scroll-view>
 </view>
 <!-- 店铺 -->
-<view class="diy-shop" style="margin-top:100rpx;">
+<view class="diy-shop" style="padding-top: 100rpx;">
   <view class="shop-item" wx:for="{{ shopList }}" wx:for-item="dataItem" wx:key="this">
     <form bindsubmit="_onTargetDetail" report-submit="true">
       <button formType="submit" class="btn-normal dis-flex flex-y-center" data-id="{{ dataItem.shop_id }}">

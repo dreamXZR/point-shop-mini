@@ -28,7 +28,7 @@
         <view class="address-cont-box flex-box" bindtap="bindRegionChange">
           <!-- <picker mode="region" bindchange="bindRegionChange"> -->
             <text wx:if="{{region}}" class="f-30">{{region}}</text>
-            <text wx:else class="f-30 col-7">选择省、市、区</text>
+            <text wx:else class="f-30 col-7">选择所在地区</text>
           <!-- </picker> -->
         </view>
       </view>
@@ -41,9 +41,9 @@
         </view>
       </view>
     </view>
-    <view class="padding-box m-top35 btn-green btn-sm">
+    <!-- <view class="padding-box m-top35 btn-green btn-sm">
       <button class="f-32" catchtap="chooseAddress">一键获取微信地址</button>
-    </view>
+    </view> -->
     <view class="padding-box m-top20 profile-btn">
       <button formType="submit" disabled="{{disabled}}">保存</button>
     </view>

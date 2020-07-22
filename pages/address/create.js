@@ -11,6 +11,9 @@ Page({
 
     name: '',
     region: '',
+    latitude:0,
+    longitude:0,
+    address:'',
     phone: '',
     detail: '',
 
@@ -31,9 +34,11 @@ Page({
     let _this = this,
       values = e.detail.value
     values.region = this.data.region;
-
+    values.latitude = this.data.latitude;
+    values.longitude = this.data.longitude;
+    values.address = this.data.address;
     // 记录formId
-    App.saveFormId(e.detail.formId);
+    //App.saveFormId(e.detail.formId);
 
     // 表单验证
     if (!_this.validation(values)) {
@@ -45,7 +50,6 @@ Page({
     _this.setData({
       disabled: true
     });
-
     // 提交到后端
     App._post_form('address/add', values, function(result) {
       App.showSuccess(result.msg, function() {
@@ -80,8 +84,8 @@ Page({
       this.data.error = '手机号不符合要求';
       return false;
     }
-    if (!this.data.region) {
-      this.data.error = '省市区不能空';
+    if (!this.data.region || this.data.longitude==0 || this.data.latitude==0) {
+      this.data.error = '所在地区不能空';
       return false;
     }
     if (values.detail === '') {
@@ -95,18 +99,16 @@ Page({
    * 修改地区
    */
   bindRegionChange: function(e) {
-    // this.setData({
-    //   region: e.detail.value
-    // })
     var that = this
     //地图
     wx.chooseLocation({
       success(res) {
         console.log(res)
         that.setData({
-          // hasLocation: true,
-          // location: formatLocation(res.longitude, res.latitude),
-          region: res.address
+          region: res.name,
+          latitude: res.latitude,
+          longitude:res.longitude,
+          address:res.address,
         })
       },
       fail: function () {

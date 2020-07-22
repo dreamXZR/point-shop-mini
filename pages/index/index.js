@@ -72,7 +72,7 @@ Page({
     this.getPageData(function() {
       wx.stopPullDownRefresh();
     });
-  }
+  },
 
   // /**
   //  * 返回顶部
@@ -92,5 +92,10 @@ Page({
   //     floorstatus: !1
   //   });
   // },
+  chooseShop:function(){
+    wx.navigateTo({
+      url: '/pages/shoplist/shoplist',
+    })
+  }
 
 });

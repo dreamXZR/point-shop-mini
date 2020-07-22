@@ -9,6 +9,9 @@ Page({
     disabled: false,
     nav_select: false, // 快捷导航
     region: '',
+    latitude:0,
+    longitude:0,
+    address:'',
     detail: {},
 
     error: '',
@@ -31,6 +34,12 @@ Page({
       address_id
     }, function(result) {
       _this.setData(result.data);
+      _this.setData({
+        region:result.data.detail.region,
+        address:result.data.detail.address,
+        latitude:result.data.detail.latitude,
+        longitude:result.data.detail.longitude,
+      });
     });
   },
 
@@ -41,9 +50,11 @@ Page({
     let _this = this,
       values = e.detail.value
     values.region = this.data.region;
-
+    values.latitude = this.data.latitude;
+    values.longitude = this.data.longitude;
+    values.address = this.data.address;
     // 记录formId
-    App.saveFormId(e.detail.formId);
+    //App.saveFormId(e.detail.formId);
 
     // 表单验证
     if (!_this.validation(values)) {
@@ -91,8 +102,8 @@ Page({
       this.data.error = '手机号不符合要求';
       return false;
     }
-    if (!this.data.region) {
-      this.data.error = '省市区不能空';
+    if (!this.data.region || this.data.longitude==0 || this.data.latitude==0) {
+      this.data.error = '所在地区不能空';
       return false;
     }
     if (values.detail === '') {
@@ -126,6 +137,75 @@ Page({
         });
       }
     })
+  },
+
+    /**
+   * 修改地区
+   */
+  bindRegionChange: function(e) {
+    var that = this
+    //地图
+    wx.chooseLocation({
+      success(res) {
+        console.log(res)
+        that.setData({
+          region: res.name,
+          latitude: res.latitude,
+          longitude:res.longitude,
+          address:res.address,
+        })
+      },
+      fail: function () {
+        wx.getSetting({
+          success: function (res) {
+            var statu = res.authSetting;
+            if (!statu['scope.userLocation']) {
+              wx.showModal({
+                title: '是否授权当前位置',
+                content: '需要获取您的地理位置，请确认授权，否则地图功能将无法使用',
+                success: function (tip) {
+                  if (tip.confirm) {
+                    wx.openSetting({
+                      success: function (data) {
+                        if (data.authSetting["scope.userLocation"] === true) {
+                          wx.showToast({
+                            title: '授权成功',
+                            icon: 'success',
+                            duration: 1000
+                          })
+                          //授权成功之后，再调用chooseLocation选择地方
+                          wx.chooseLocation({
+                            success: function (res) {
+                              obj.setData({
+                                addr: res.address
+                              })
+                            },
+                          })
+                        } else {
+                          wx.showToast({
+                            title: '授权失败',
+                            icon: 'success',
+                            duration: 1000
+                          })
+                        }
+                      }
+                    })
+                  }
+                }
+              })
+            }
+          },
+          fail: function (res) {
+            wx.showToast({
+              title: '调用授权窗口失败',
+              icon: 'success',
+              duration: 1000
+            })
+          }
+        })
+      }
+    })
+    
   },
 
 })
