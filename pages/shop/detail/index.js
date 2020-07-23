@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    scrollHeight: null,
     // 优惠时间
     countdown:'2020-07-06 22:53:00',
     // 门店详情
@@ -33,15 +34,27 @@ Page({
    */
   onLoad(option) {
     let _this = this;
-   
+
+    // 设置商品列表高度
+    _this.setListHeight();
+
+    // 记录option
     _this.setData({
       option
     }, function() {
       // 获取商品列表
       _this.getGoodsList();
-       // 获取门店详情
+      // 获取门店详情
     _this.getShopDetail(option.shop_id);
     });
+    // _this.setData({
+    //   option
+    // }, function() {
+    //   // 获取商品列表
+    //   _this.getGoodsList();
+    //    // 获取门店详情
+    // _this.getShopDetail(option.shop_id);
+    // });
   },
 
   /**
@@ -54,6 +67,20 @@ Page({
     }, function(result) {
       _this.setData(result.data);
 
+    });
+  },
+
+  /**
+   * 设置商品列表高度
+   */
+  setListHeight: function() {
+    let _this = this;
+    wx.getSystemInfo({
+      success: function(res) {
+        _this.setData({
+          scrollHeight: res.windowHeight - 90,
+        });
+      }
     });
   },
 
@@ -117,6 +144,22 @@ Page({
       latitude: Number(detail.latitude),
       scale: 15
     });
+  },
+
+
+  /**
+   * 下拉到底加载数据
+   */
+  bindDownLoad: function() {
+    // 已经是最后一页
+    if (this.data.page >= this.data.list.last_page) {
+      this.setData({
+        no_more: true
+      });
+      return false;
+    }
+    // 加载下一页列表
+    this.getGoodsList(true, ++this.data.page);
   },
 
    /**
