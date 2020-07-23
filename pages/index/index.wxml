@@ -1,7 +1,7 @@
 <view class="container b-f">
   <!-- 店铺选择-->
   <view bindtap="chooseShop">
-  请选择店铺
+  {{select_shop_name ? select_shop_name:'请选择店铺'}}
   </view>
   <!-- DIY组件 -->
   <diy-component diyItems="{{ items }}"></diy-component>

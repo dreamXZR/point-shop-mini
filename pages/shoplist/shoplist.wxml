@@ -23,7 +23,7 @@
 <view class="diy-shop" style="padding-top: 100rpx;">
   <view class="shop-item" wx:for="{{ shopList }}" wx:for-item="dataItem" wx:key="this">
     <form bindsubmit="_onTargetDetail" report-submit="true">
-      <button formType="submit" class="btn-normal dis-flex flex-y-center" data-id="{{ dataItem.shop_id }}">
+      <button formType="submit" class="btn-normal dis-flex flex-y-center" data-shopid="{{ dataItem.shop_id }}" data-shopname="{{ dataItem.shop_name }}">
         <view class="shop-item__logo">
           <image src="{{ dataItem.logo.file_path }}"></image>
         </view>

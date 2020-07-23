@@ -238,8 +238,13 @@ Page({
    * 选择门店
    */
   _onTargetDetail(e) {
-    wx.navigateTo({
-      url: '/pages/shop/detail/index?shop_id=' + e.detail.target.dataset.id,
+    //保存店铺选择状态
+    let shop_id = e.detail.target.dataset.shopid
+    let shop_name = e.detail.target.dataset.shopname
+    wx.setStorageSync('select_shop_id', shop_id)
+    wx.setStorageSync('select_shop_name', shop_name)
+    wx.switchTab({
+      url: '/pages/index/index',
     });
   },
 

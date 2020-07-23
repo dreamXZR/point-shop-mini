@@ -8,6 +8,8 @@ Page({
     // 页面元素
     items: {},
     scrollTop: 0,
+    select_shop_id:0,
+    select_shop_name:''
   },
 
   /**
@@ -21,14 +23,29 @@ Page({
     // 加载页面数据
     this.getPageData();
   },
-
+  onShow:function(){
+     //当前选择店铺
+    //  var select_shop_id = wx.getStorageSync('select_shop_id') 
+    //  if(!select_shop_id){
+    //   select_shop_id = 0
+    //  }
+    //  var select_shop_name = wx.getStorageSync('select_shop_name')
+    //  if(!select_shop_name){
+    //   select_shop_name = ''
+    //  }
+    //   this.setData({
+    //     select_shop_id:select_shop_id,
+    //     select_shop_name:select_shop_name
+    //   })
+  },
   /**
    * 加载页面数据
    */
   getPageData: function(callback) {
     let _this = this;
     App._get('page/index', {
-      page_id: _this.data.options.page_id
+      page_id: _this.data.options.page_id,
+      select_shop_id:_this.data.select_shop_id
     }, function(result) {
       // 设置顶部导航栏栏
       _this.setPageBar(result.data.page);
