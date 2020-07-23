@@ -11,7 +11,7 @@
         <text>待发货</text>
       </view>
       <view bindtap="bindHeaderTap" class="{{dataType==='received'?'active':''}}" data-type="received">
-        <text>待收货</text>
+        <text>配送中</text>
       </view>
       <view bindtap="bindHeaderTap" class="{{dataType==='comment'?'active':''}}" data-type="comment">
         <text>待评价</text>

@@ -149,11 +149,12 @@ Page({
     if (_this.data.disabled) {
       return false;
     }
-
+    console.log(_this.data.hasError)
     if (_this.data.hasError) {
       App.showError(_this.data.error);
       return false;
     }
+    
 
     // 订单创建成功后回调--微信支付
     let callback = function(result) {

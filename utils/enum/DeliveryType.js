@@ -3,7 +3,7 @@
  */
 module.exports = {
   EXPRESS: {
-    name: '快递配送',
+    name: '商家配送',
     value: 10
   },
   EXTRACT:{

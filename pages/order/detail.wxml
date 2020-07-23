@@ -57,7 +57,7 @@
     </view>
 
     <!-- 物流信息 -->
-    <view class="flow-all-money b-f padding-box m-top20" wx:if="{{ order.delivery_type.value == deliverys.EXPRESS.value && order.delivery_status.value == 20 }}">
+    <!-- <view class="flow-all-money b-f padding-box m-top20" wx:if="{{ order.delivery_type.value == deliverys.EXPRESS.value && order.delivery_status.value == 20 }}">
       <view class="flow-all-list dis-flex">
         <text class="">物流信息</text>
       </view>
@@ -74,7 +74,7 @@
           <text class="iconfont icon-xiangyoujiantou user-orderJtou"></text>
         </view>
       </navigator>
-    </view>
+    </view> -->
 
     <!-- 商品列表 -->
     <view class="flow-all-money b-f padding-box m-top20">
@@ -94,7 +94,7 @@
     </view>
     <!-- 商品详情 -->
     <view class="padding-box b-f">
-      <view bindtap="goodsDetail" class="dis-flex flow-shopList b-f" data-id="{{item.goods_id}}" wx:for="{{order.goods}}" wx:key="this">
+      <view class="dis-flex flow-shopList b-f" data-id="{{item.goods_id}}" wx:for="{{order.goods}}" wx:key="this">
         <view class="flow-list-left">
           <image mode="scaleToFill" src="{{item.image.file_path}}"></image>
         </view>

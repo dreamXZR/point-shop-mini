@@ -84,6 +84,7 @@ Page({
       page: page || 1,
       status: this.data.dataType,
       search: this.data.option.search || '',
+      select_shop_id:wx.getStorageSync('select_shop_id')
     }, function(result) {
       let resList = result.data.list,
         dataList = _this.data.list;

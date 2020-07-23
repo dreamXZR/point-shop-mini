@@ -44,13 +44,10 @@
             </view>
             <view class="right">
               <view class="cont">
-                <text class="f-30 title twolist-hidden m-top10">{{item.goods_name}}</text>
+                <text class="f-30 title twolist-hidden m-top10" style="height:49rpx;">{{item.goods_name}}<text style="color:gray;font-size:25rpx;" wx:if="{{item.exchange_points>0}}"> (获取积分: {{item.exchange_points}})</text></text>
                 <view class="price f-32 col-m m-top10">
                   价格：￥{{item.sku[0].goods_price}}
                   <text class="del f-22" wx:if="{{item.sku[0].line_price>0}}">{{item.sku[0].line_price}}</text>
-                </view>
-                <view class="price f-32 col-m m-top10">
-                  获取积分: {{item.exchange_points}}
                 </view>
               </view>
             </view>

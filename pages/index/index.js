@@ -25,23 +25,29 @@ Page({
   },
   onShow:function(){
      //当前选择店铺
-    //  var select_shop_id = wx.getStorageSync('select_shop_id') 
-    //  if(!select_shop_id){
-    //   select_shop_id = 0
-    //  }
-    //  var select_shop_name = wx.getStorageSync('select_shop_name')
-    //  if(!select_shop_name){
-    //   select_shop_name = ''
-    //  }
-    //   this.setData({
-    //     select_shop_id:select_shop_id,
-    //     select_shop_name:select_shop_name
-    //   })
+     var select_shop_id = wx.getStorageSync('select_shop_id') 
+     if(!select_shop_id){
+      select_shop_id = 0
+     }
+     var select_shop_name = wx.getStorageSync('select_shop_name')
+     if(!select_shop_name){
+      select_shop_name = ''
+     }
+      this.setData({
+        select_shop_id:select_shop_id,
+        select_shop_name:select_shop_name
+      },function(){
+        this.getPageData();
+      })
+     
   },
   /**
    * 加载页面数据
    */
   getPageData: function(callback) {
+    wx.showLoading({
+      title: '加载中',
+    })
     let _this = this;
     App._get('page/index', {
       page_id: _this.data.options.page_id,
@@ -52,6 +58,8 @@ Page({
       _this.setData(result.data);
       // 回调函数
       typeof callback === 'function' && callback();
+      //取消加载
+      wx.hideLoading();
     });
   },
 

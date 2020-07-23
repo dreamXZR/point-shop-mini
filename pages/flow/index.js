@@ -38,7 +38,8 @@ Page({
    */
   getCartList: function() {
     let _this = this;
-    App._get('cart/lists', {}, function(result) {
+    let select_shop_id = wx.getStorageSync('select_shop_id');
+    App._get('cart/lists', {select_shop_id:select_shop_id}, function(result) {
       _this.setData({
         goods_list: result.data.goods_list,
         order_total_price: result.data.order_total_price,
