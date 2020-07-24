@@ -1,0 +1,27 @@
+/* pages/location/location.wxss */
+@import "/wxParse/wxParse.wxss";
+
+.box {
+  text-align: center;
+  padding: 0 80rpx;
+  padding-top: 200rpx;
+  color: #FFC824;
+  font-size: 30rpx;
+  
+}
+.box .dwlogo image{
+  width: 200rpx;
+  height: 200rpx;
+}
+.btn{
+  width: 400rpx;
+  border: 1px solid #FFC824;
+  border-radius: 10rpx;
+  line-height: 70rpx;
+  margin: 0 auto;
+  margin-top: 40rpx;
+}
+.box .btn-kaitong{
+  background-color: #FFC824;
+  color: #fff;
+}

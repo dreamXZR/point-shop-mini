@@ -1,7 +1,16 @@
 <view class="container b-f">
   <!-- 店铺选择-->
-  <view bindtap="chooseShop">
-  {{select_shop_name ? select_shop_name:'请选择店铺'}}
+  <view bindtap="chooseShop" class="chooseShop">
+    <view class="pic">
+      <image src="../../images/wz.png"></image>
+    </view>
+    <view class="shopname f-32">
+      {{select_shop_name ? select_shop_name:'请选择店铺'}}
+
+    </view>
+    <view class="down">
+      <image src="../../images/down.png"></image>
+    </view>
   </view>
   <!-- DIY组件 -->
   <diy-component diyItems="{{ items }}"></diy-component>

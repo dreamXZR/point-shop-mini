@@ -4,3 +4,21 @@
 page {
   background: #fff !important;
 }
+.chooseShop{
+  display: flex;
+  margin-top: 5rpx;
+  margin-left: 20rpx;
+}
+.chooseShop .pic image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.chooseShop .shopname{
+  line-height: 50rpx;
+  margin-left: 10rpx;
+  margin-right: 5rpx;
+}
+.chooseShop .down image{
+  width: 30rpx;
+  height: 25rpx;
+}
