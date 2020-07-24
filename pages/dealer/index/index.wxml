@@ -66,7 +66,14 @@
           <view class="item__text f-28">{{ words.order.title.value }}</view>
         </navigator>
       </view>
-      
+      <view class="operat__item">
+        <navigator hover-class="none" url="../order/order">
+          <view class="item__icon">
+            <text class="iconfont icon-dingdan" style="color:#FF7575;"></text>
+          </view>
+          <view class="item__text f-28">订单配送</view>
+        </navigator>
+      </view>
     </view>
   </view>
 </view>

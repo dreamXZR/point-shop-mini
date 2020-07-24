@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "积分兑换",
+  "navigationBarTitleText": "我的订单",
   "usingComponents": {
     "zan-popup": "/components/popup/index"
   }
