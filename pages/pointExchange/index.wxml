@@ -1,11 +1,20 @@
 <view class="container">
   <view class="goods-detail-box">
     <view class="header f-28 col-3">
-      <view catchtap="bindHeaderTap" class="{{dataType==='no-exchange'?'active':''}}" data-type="no-exchange">
-        <text>未兑换</text>
+      <view catchtap="bindHeaderTap" class="{{dataType==='all'?'active':''}}" data-type="all">
+        <text>全部</text>
       </view>
-      <view bindtap="bindHeaderTap" class="{{dataType==='exchange'?'active':''}}" data-type="exchange">
-        <text>已兑换</text>
+      <view bindtap="bindHeaderTap" class="{{dataType==='payment'?'active':''}}" data-type="payment">
+        <text>待付款</text>
+      </view>
+      <view bindtap="bindHeaderTap" class="{{dataType==='delivery'?'active':''}}" data-type="delivery">
+        <text>待发货</text>
+      </view>
+      <view bindtap="bindHeaderTap" class="{{dataType==='received'?'active':''}}" data-type="received">
+        <text>配送中</text>
+      </view>
+      <view bindtap="bindHeaderTap" class="{{dataType==='comment'?'active':''}}" data-type="comment">
+        <text>待评价</text>
       </view>
     </view>
     <scroll-view bindscrolltolower="bindDownLoad" scroll-y style="height: {{scrollHeight}}px; width: 750rpx;margin-top:88rpx;">
@@ -14,6 +23,9 @@
         <view class="m-top20" wx:for="{{list.data}}" wx:key="this" catchtap="navigateToDetail" data-id="{{item.order_id}}">
           <view class="order-box b-f">
             <view class="order-header dis-flex">
+              <view class="flex-box t-l">
+                <text class="title">商品列表</text>
+              </view>
               <view class="flex-box t-r">
                 <text class="cont">{{item.state_text}}</text>
               </view>
@@ -22,7 +34,10 @@
           <view class="order-box b-f">
             <view class="order-cont dis-flex">
               <view class="order-num">
-                <text>兑换时间：{{item.create_time}}</text>
+                <text>订单号：{{item.order_no}}</text>
+              </view>
+              <view class="order-time">
+                <text>{{item.create_time}}</text>
               </view>
             </view>
           </view>
@@ -31,16 +46,14 @@
               <view class="order-list-box dis-flex">
                 <view class="left">
                   <view class="dis-flex">
-                    <view class="order-shop-left">
-                      <image src="{{item.goods.image[0].file_path}}"></image>
+                    <view class="order-shop-left" wx:for="{{item.goods}}" wx:key="goods">
+                      <image src="{{item.image.file_path}}"></image>
                     </view>
                   </view>
                 </view>
-                 <view class="right dis-flex flex-x-center flex-y-center" style="flex:4;">
-                  <text class="goods-number">商品信息：{{item.goods.goods_name}}</text>
-                </view>
                 <view class="right dis-flex flex-x-center flex-y-center">
-                  <text class="goods-number">共{{item.exchange_number}}件</text>
+                  <text class="goods-number">共{{item.goods.length}}件</text>
+                  <text class="iconfont icon-xiangyoujiantou user-orderJtou"></text>
                 </view>
               </view>
             </view>
@@ -48,18 +61,45 @@
           <view class="order-box b-f">
             <view class="order-btn dis-flex">
               <view class="order-left">
+                <view class="text">
+                  <text>合计：</text>
+                  <text class="col-m">￥{{item.pay_price}}</text>
+                </view>
               </view>
               <view class="order-right">
-                <view class="btn-group dis-flex">
-                  <block>
+                <view class="btn-group dis-flex" wx:if="{{ item.order_status.value != 20 }}">
+                  <!-- 未支付取消订单 -->
+                  <view wx:if="{{ item.pay_status.value==10 }}">
+                    <view catchtap="cancelOrder" class="btn-default" data-id="{{item.order_id}}">取消</view>
+                  </view>
+                  <!-- 已支付取消订单 -->
+                  <block wx:if="{{ item.order_status.value!=21 }}">
+                    <view wx:if="{{ item.pay_status.value==20 && item.delivery_status.value==10 }}">
+                      <view catchtap="cancelOrder" class="btn-default" data-id="{{item.order_id}}">申请取消</view>
+                    </view>
                     <!-- 订单核销码 -->
-                    <view wx:if="{{item.is_used == 0}}">
-                      <view catchtap="onExtractQRCode" class="btn-main" data-id="{{item.id}}" data-code="{{item.exchange_code}}">
+                    <view wx:if="{{ item.pay_status.value==20 && item.delivery_type.value == deliverys.EXTRACT.value && item.delivery_status.value == 10 }}">
+                      <view catchtap="onExtractQRCode" class="btn-main" data-id="{{item.order_id}}" data-code="{{item.exchange_code}}">
                         <text class="iconfont icon-qr-extract"></text>
                         <text class="m-l-10">核销码</text>
                       </view>
                     </view>
                   </block>
+                  <block wx:else>
+                    <view class="f-28 col-8">取消申请中</view>
+                  </block>
+                  <!-- 订单付款 -->
+                  <view wx:if="{{item.pay_status.value==10}}">
+                    <view catchtap="payOrder" class="btn-main" data-id="{{item.order_id}}">付款</view>
+                  </view>
+                  <!-- 确认收货 -->
+                  <view wx:if="{{item.delivery_status.value==20 && item.receipt_status.value == 10}}">
+                    <view catchtap="receipt" class="btn-main" data-id="{{item.order_id}}">确认收货</view>
+                  </view>
+                  <!-- 订单评价 -->
+                  <view wx:if="{{item.order_status.value==30 && item.is_comment==0}}">
+                    <view catchtap="comment" class="btn-default" data-id="{{item.order_id}}">评价</view>
+                  </view>
                 </view>
               </view>
             </view>
@@ -70,7 +110,7 @@
       <view wx:if="{{ !isLoading && !list.data.length }}">
         <view class="yoshop-notcont">
           <text class="iconfont icon-wushuju"></text>
-          <text class="cont">亲，您还没有兑换信息哦！</text>
+          <text class="cont">亲，您还没有订单信息哦！</text>
         </view>
       </view>
     </scroll-view>

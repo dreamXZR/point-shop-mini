@@ -263,12 +263,17 @@ Page({
       });
     } else if(submitType === 'exchangeNow'){
       //积分兑换
-      App._post_form('point_goods/exchange', {
-        goods_id: _this.data.goods_id,
-        goods_num: _this.data.goods_num,
-        goods_sku_id: _this.data.goods_sku_id,
-      }, function (result) {
-        App.showSuccess(result.msg);
+      wx.navigateTo({
+        url: '../flow/checkout?' + util.urlEncode({
+          order_type: 'exchangeNow',
+          goods_id: _this.data.goods_id,
+          goods_num: _this.data.goods_num,
+          goods_sku_id: _this.data.goods_sku_id,
+        }),
+        success() {
+          // 关闭弹窗
+          _this.onToggleTrade();
+        }
       });
     }
   },

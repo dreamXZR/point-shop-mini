@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    dataType: 'no-exchange', // 列表类型
+    dataType: 'all', // 列表类型
     list: [], // 订单列表
     scrollHeight: null, // 列表容器高度
 
@@ -30,7 +30,7 @@ Page({
   onLoad: function(options) {
     let _this = this;
     _this.setListHeight();
-    this.data.dataType = options.type || 'no-exchange';
+    this.data.dataType = options.type || 'all';
     this.setData({
       dataType: this.data.dataType
     });
@@ -45,11 +45,11 @@ Page({
   },
 
   /**
-   * 获取兑换列表
+   * 获取订单列表
    */
   getOrderList: function(isPage, page) {
     let _this = this;
-    App._get('user/exchangeLists', {
+    App._get('user.order/lists', {
       page: page || 1,
       dataType: _this.data.dataType
     }, function(result) {
@@ -79,7 +79,7 @@ Page({
       page: 1,
       no_more: false,
     });
-    // 获取兑换列表
+    // 获取订单列表
     this.getOrderList(e.currentTarget.dataset.type);
   },
 
@@ -102,6 +102,79 @@ Page({
         }
       }
     });
+  },
+
+  /**
+   * 确认收货
+   */
+  receipt: function(e) {
+    let _this = this;
+    let order_id = e.currentTarget.dataset.id;
+    wx.showModal({
+      title: "提示",
+      content: "确认收到商品？",
+      success: function(o) {
+        if (o.confirm) {
+          App._post_form('user.order/receipt', {
+            order_id
+          }, function(result) {
+            _this.getOrderList(_this.data.dataType);
+          });
+        }
+      }
+    });
+  },
+
+  /**
+   * 发起付款
+   */
+  payOrder: function(e) {
+    let _this = this;
+    let order_id = e.currentTarget.dataset.id;
+
+    // 显示loading
+    wx.showLoading({
+      title: '正在处理...',
+    });
+    App._post_form('user.order/pay', {
+      order_id
+    }, function(result) {
+      if (result.code === -10) {
+        App.showError(result.msg);
+        return false;
+      }
+      // 发起微信支付
+      wx.requestPayment({
+        timeStamp: result.data.timeStamp,
+        nonceStr: result.data.nonceStr,
+        package: 'prepay_id=' + result.data.prepay_id,
+        signType: 'MD5',
+        paySign: result.data.paySign,
+        success: function(res) {
+          // 跳转到已付款订单
+          wx.navigateTo({
+            url: '../order/detail?order_id=' + order_id
+          });
+        },
+        fail: function() {
+          App.showError('订单未支付');
+        },
+      });
+    }, null, function() {
+      wx.hideLoading();
+    });
+  },
+
+  /**
+   * 订单评价
+   */
+  comment: function(e) {
+    let _this = this;
+    let order_id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: './comment/comment?order_id=' + order_id,
+    })
+    console.log(order_id);
   },
 
   /**
@@ -150,14 +223,14 @@ Page({
    * 查看核销二维码
    */
   onExtractQRCode(e) {
-    let _this = this,
-    exchange_code = e.currentTarget.dataset.code;
+    let _this = this;
+    let code =  e.currentTarget.dataset.code;
     wx.showModal({
-      title: '商品核销码',
-      content: exchange_code,
+      title: "商品核销码",
+      content: code,
       showCancel: false,
     })
-      //order_id = e.currentTarget.dataset.id;
+    //   order_id = e.currentTarget.dataset.id;
     // // 调用后台api获取核销二维码
     // wx.showLoading({
     //   title: '加载中',

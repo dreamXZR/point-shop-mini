@@ -12,7 +12,7 @@ Page({
 
     // 当前页面参数
     options: {},
-
+    order_type:'',
     // 配送方式
     deliverys: DeliveryTypeEnum,
     currentDelivery: DeliveryTypeEnum.EXPRESS.value,
@@ -49,6 +49,9 @@ Page({
     let _this = this;
     // 当前页面参数
     _this.data.options = options;
+    _this.setData({
+      order_type:options.order_type
+    })
   },
 
   /**
@@ -102,6 +105,19 @@ Page({
         callback(result);
       });
     }
+
+    // 积分兑换
+    else if (options.order_type === 'exchangeNow') {
+      App._get('order/exchangeNow', {
+        goods_id: options.goods_id,
+        goods_num: options.goods_num,
+        goods_sku_id: options.goods_sku_id,
+        delivery: _this.data.currentDelivery,
+        shop_id: _this.data.selectedShopId,
+      }, function(result) {
+        callback(result);
+      });
+    }
   },
 
   /**
@@ -135,7 +151,7 @@ Page({
     options = _this.data.options,
       selectedId = _this.data.selectedShopId;
     wx.navigateTo({
-      url: '../_select/extract_point/index?selected_id=' + selectedId + '&shop_id=' + options.shop_id
+      url: '../_select/extract_point/index?selected_id=' + selectedId + '&shop_id=' + options.shop_id + '&order_type=' + options.order_type
     });
   },
 
@@ -238,6 +254,30 @@ Page({
         // success
         console.log('success');
         callback(result);
+      }, function(result) {
+        // fail
+        console.log('fail');
+      }, function() {
+        // complete
+        console.log('complete');
+        wx.hideLoading();
+        // 解除按钮禁用
+        _this.data.disabled = false;
+      });
+    }
+
+    else if (options.order_type === 'exchangeNow') {
+      App._post_form('order/exchangeNow', {
+        goods_id: options.goods_id,
+        goods_num: options.goods_num,
+        goods_sku_id: options.goods_sku_id,
+        delivery: _this.data.currentDelivery,
+        shop_id: _this.data.selectedShopId,
+        remark: _this.data.remark
+      }, function(result) {
+        // success
+        console.log('success');
+
       }, function(result) {
         // fail
         console.log('fail');

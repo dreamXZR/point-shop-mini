@@ -74,14 +74,15 @@
             <text class="f-30 col-3 twolist-hidden">{{item.goods_name}}</text>
             <text class="f-26 col-7">{{item.goods_sku.goods_attr}}</text>
             <view class="flow-list-cont dis-flex flex-x-between flex-y-center">
-              <text class="flow-cont">￥{{item.goods_price}}</text>
+              <text class="flow-cont" wx:if="{{ order_type!='exchangeNow' }}">￥{{item.goods_price}}</text>
+              <text class="flow-cont" wx:if="{{ order_type=='exchangeNow' }}">积分：{{item.exchange_points}}</text>
               <text class="small">×{{item.total_num}}</text>
             </view>
           </view>
         </view>
       </navigator>
     </view>
-    <view class="flow-num-box b-f padding-box">
+    <view class="flow-num-box b-f padding-box" wx:if="{{ order_type!='exchangeNow' }}">
       <text>共{{order_total_num}}件商品，合计：</text>
       <text class="flow-money col-m">￥{{order_total_price}}</text>
     </view>
@@ -95,7 +96,7 @@
   </view>
 
   <!-- 商品金额 -->
-  <view class="flow-all-money b-f m-top20">
+  <view class="flow-all-money b-f m-top20" wx:if="{{order_type!='exchangeNow'}}">
     <view class="dis-flex flow-all-list">
       <text class="flex-five">商品总金额：</text>
       <view class="flex-five t-r">
@@ -116,7 +117,7 @@
       </view>
     </view> -->
     <!-- 配送费用 -->
-    <view wx:if="{{ currentDelivery == deliverys.EXPRESS.value }}" class="dis-flex flow-all-list">
+    <view wx:if="{{ currentDelivery == deliverys.EXPRESS.value && order_type!='exchangeNow' }}" class="dis-flex flow-all-list">
       <text class="flex-five">配送费用：</text>
       <view class="flex-five t-r">
         <view wx:if="{{address.address_id}}">
@@ -133,11 +134,14 @@
   <!-- 提交订单 -->
   <view class="flow-fixed-footer b-f m-top10">
     <view class="dis-flex chackout-box">
-      <view class=" chackout-left pl-12 ">实付款：
+      <view class=" chackout-left pl-12 " wx:if="{{order_type != 'exchangeNow'}}">实付款：
         <text class="col-m">￥{{ actual_pay_price > 0 ? actual_pay_price:  order_pay_price }}</text>
       </view>
-      <view bindtap="submitOrder" class="chackout-right">
+      <view bindtap="submitOrder" class="chackout-right" wx:if="{{order_type != 'exchangeNow'}}">
         <text class="flow-btn f-32">提交订单</text>
+      </view>
+      <view bindtap="submitOrder" class="chackout-right" wx:if="{{order_type == 'exchangeNow'}}">
+        <text class="flow-btn f-32">立即兑换</text>
       </view>
     </view>
   </view>
