@@ -33,12 +33,15 @@ Page({
      if(!select_shop_name){
       select_shop_name = ''
      }
-      this.setData({
-        select_shop_id:select_shop_id,
-        select_shop_name:select_shop_name
-      },function(){
-        this.getPageData();
-      })
+     //判断用户是否选择店铺 
+     if(select_shop_id == 0){
+      this.getLocation((res) => {
+        this.getShortOne(res.longitude, res.latitude);
+      });
+     }else{
+        this.setShopInfo(select_shop_id,select_shop_name)
+     }
+      
      
   },
   /**
@@ -117,10 +120,51 @@ Page({
   //     floorstatus: !1
   //   });
   // },
-  chooseShop:function(){
+  /**
+   * 获取用户坐标
+   */
+  getLocation(callback) {
+    let _this = this;
+    wx.getLocation({
+      type: 'wgs84',
+      success(res) {
+        // console.log(res);
+        callback && callback(res);
+      },
+      fail() {
+        wx.navigateTo({
+          url: '/pages/location/location',
+        })
+      },
+    })
+  },
+
+  getShortOne(longitude, latitude) {
+    let _this = this;
+    App._get('shop/getShortOne', {
+      longitude: longitude || '',
+      latitude: latitude || '',
+    }, (result) => {
+      _this.setShopInfo(result.data.list.shop_id,result.data.list.shop_name)
+    });
+ },
+
+ setShopInfo(select_shop_id,select_shop_name){
+    wx.setStorageSync('select_shop_id', select_shop_id)
+    wx.setStorageSync('select_shop_name', select_shop_name)
+    this.setData({
+      select_shop_id:select_shop_id,
+      select_shop_name:select_shop_name
+    },function(){
+      this.getPageData();
+    })
+ },
+ chooseShop(){
     wx.navigateTo({
       url: '/pages/shoplist/shoplist',
     })
-  }
+ },
+
+
 
 });

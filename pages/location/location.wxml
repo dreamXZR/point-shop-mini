@@ -1,5 +1,4 @@
 <!--pages/location/location.wxml-->
-<import src="../../wxParse/wxParse.wxml"></import>
 <view class="box">
   <view class="dwlogo">
     <image src="../../images/wzlogo.png"></image>
@@ -10,10 +9,10 @@
   <view style="margin-top: 10rpx; margin-bottom: 50rpx;">
     请打开手机系统设置中微信的定位权限，同时在小程序中开通「定位服务」。
   </view>
-  <view class="btn btn-kaitong">
+  <view class="btn btn-kaitong" bindtap="onAuthorize">
     开通小程序权限
   </view>
-  <view class="btn btn-shoudong">
-    手动选择地址
+  <view class="btn btn-shoudong" bindtap="navigateToShopList">
+    手动选择店铺
   </view>
 </view>

@@ -1,7 +1,7 @@
 const App = getApp();
 
 // 枚举类：发货方式
-const DeliveryTypeEnum = require('../../utils/enum/DeliveryType.js');
+const DeliveryTypeEnum = require('../../../utils/enum/DeliveryType.js');
 
 Page({
 
@@ -32,7 +32,8 @@ Page({
     _this.setListHeight();
     this.data.dataType = options.type || 'delivery';
     this.setData({
-      dataType: this.data.dataType
+      dataType: this.data.dataType,
+      shop_id:options.shop_id
     });
   },
 
@@ -49,9 +50,10 @@ Page({
    */
   getOrderList: function(isPage, page) {
     let _this = this;
-    App._get('user.order/pointLists', {
+    App._get('shop.order/lists', {
       page: page || 1,
-      dataType: _this.data.dataType
+      dataType: _this.data.dataType,
+      shop_id:_this.data.shop_id
     }, function(result) {
       let resList = result.data.list,
         dataList = _this.data.list;
@@ -84,17 +86,17 @@ Page({
   },
 
   /**
-   * 取消订单
+   * 订单发货
    */
-  cancelOrder: function(e) {
+  deliveryOrder: function(e) {
     let _this = this;
     let order_id = e.currentTarget.dataset.id;
     wx.showModal({
       title: "友情提示",
-      content: "确认要取消该订单吗？",
+      content: "确认要发货吗？",
       success: function(o) {
         if (o.confirm) {
-          App._post_form('user.order/cancel', {
+          App._post_form('shop.order/delivery', {
             order_id
           }, function(result) {
             _this.getOrderList(_this.data.dataType);
@@ -183,7 +185,7 @@ Page({
   navigateToDetail: function(e) {
     let order_id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: './detail?order_id=' + order_id
+      url: '/pages/order/detail?order_id=' + order_id
     });
   },
 

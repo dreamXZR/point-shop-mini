@@ -67,7 +67,7 @@
         </navigator>
       </view>
       <view class="operat__item">
-        <navigator hover-class="none" url="../order/order">
+        <navigator hover-class="none" url="../delivery/delivery?shop_id={{dealer.shop_id}}">
           <view class="item__icon">
             <text class="iconfont icon-dingdan" style="color:#FF7575;"></text>
           </view>

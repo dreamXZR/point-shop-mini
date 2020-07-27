@@ -1,5 +1,4 @@
 /* pages/location/location.wxss */
-@import "/wxParse/wxParse.wxss";
 
 .box {
   text-align: center;

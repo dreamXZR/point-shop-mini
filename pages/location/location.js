@@ -1,23 +1,29 @@
-// pages/location/location.js
-Component({
-  /**
-   * 组件的属性列表
-   */
-  properties: {
+const App = getApp();
+Page({
 
+  navigateToShopList:function () {
+    wx.navigateTo({
+      url: '/pages/shoplist/shoplist',
+    })
   },
-
-  /**
-   * 组件的初始数据
-   */
-  data: {
-
+  onAuthorize() {
+    let _this = this;
+    wx.openSetting({
+      success(res) {
+        if (res.authSetting["scope.userLocation"]) {
+          console.log('授权成功');
+          _this.setData({
+            isAuthor: true
+          });
+          setTimeout(() => {
+            // 获取用户坐标
+            _this.getLocation((res) => {
+              console.log('获取用户坐标');
+              _this.getShopList(res.longitude, res.latitude);
+            });
+          }, 1000);
+        }
+      }
+    })
   },
-
-  /**
-   * 组件的方法列表
-   */
-  methods: {
-
-  }
 })

@@ -56,7 +56,9 @@
     "pages/seckill/search/index",
     "pages/seckill/seckillGoods/index",
     "pages/shoplist/shoplist",
-    "pages/location/location"
+    "pages/location/location",
+    "pages/dealer/delivery/delivery",
+    "pages/pointExchange/detail"
 
 
   ],

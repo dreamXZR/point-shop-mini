@@ -158,7 +158,6 @@ Page({
       _this.setData({
         shopList: result.data.list,
       });
-      // console.log(result.data.list)
 
     });
 
