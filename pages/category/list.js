@@ -172,7 +172,7 @@ Page({
     }
     // 跳转到商品搜索
     wx.navigateTo({
-      url: '../search/index',
+      url: './search/index',
     })
   },
 

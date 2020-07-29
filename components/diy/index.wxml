@@ -70,9 +70,9 @@
     <diy-goods itemIndex="{{ itemIndex }}" itemStyle="{{ item.style }}" dataList="{{ item.data }}"></diy-goods>
   </block>
   <!-- 积分商品组 -->
-  <block wx:if="{{item.type === 'pointGoods'}}">
+  <!-- <block wx:if="{{item.type === 'pointGoods'}}">
     <diy-pointGoods itemIndex="{{ itemIndex }}" itemStyle="{{ item.style }}" dataList="{{ item.data }}"></diy-pointGoods>
-  </block>
+  </block> -->
   <!-- 限时优惠商品组 -->
   <block wx:if="{{item.type === 'seckillGoods'}}">
     <diy-seckillGoods itemIndex="{{ itemIndex }}" itemStyle="{{ item.style }}" dataList="{{ item.data }}"></diy-seckillGoods>

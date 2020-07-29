@@ -12,7 +12,6 @@
     "diy-navBar": "./navBar/navBar",
     "diy-window": "./window/window",
     "diy-goods": "./goods/goods",
-    "diy-pointGoods": "./pointGoods/goods",
     "diy-coupon": "./coupon/coupon",
     "diy-notice": "./notice/notice",
     "diy-service": "./service/service",
